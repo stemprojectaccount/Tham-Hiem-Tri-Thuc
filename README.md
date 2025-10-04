@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -26,7 +25,7 @@
             background: linear-gradient(135deg, #1a237e 0%, #4a148c 100%);
             color: var(--light);
             min-height: 100vh;
-            padding: 20px;
+            padding: 10px;
             overflow-x: hidden;
         }
         
@@ -77,7 +76,7 @@
         
         .header {
             background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
-            padding: 20px;
+            padding: 15px 10px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -106,8 +105,8 @@
         }
         
         .title {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 8px;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             background: linear-gradient(45deg, #fff, #ffeb3b);
             -webkit-background-clip: text;
@@ -125,21 +124,24 @@
         }
         
         .subtitle {
-            font-size: 1.2rem;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
             opacity: 0.9;
         }
         
         .game-content {
-            padding: 30px;
+            padding: 15px;
             position: relative;
         }
         
         .stats {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
             background: rgba(0, 0, 0, 0.2);
-            padding: 15px;
+            padding: 12px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -147,34 +149,42 @@
         .player-info {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
+            flex: 1;
+            min-width: 150px;
         }
         
         .player-avatar {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: linear-gradient(45deg, var(--secondary), var(--accent));
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
         
         .player-name {
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: bold;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         
         .hearts {
             display: flex;
-            gap: 10px;
+            gap: 5px;
+            flex: 1;
+            justify-content: center;
+            min-width: 120px;
         }
         
         .heart {
             color: var(--danger);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             animation: heartbeat 1.5s infinite;
         }
         
@@ -188,17 +198,20 @@
         }
         
         .score {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: var(--secondary);
             text-shadow: 0 0 10px rgba(255, 111, 0, 0.5);
+            flex: 1;
+            text-align: right;
+            min-width: 100px;
         }
         
         .scene {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
+            padding: 15px;
+            margin-bottom: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
@@ -211,38 +224,39 @@
         
         .scene-image {
             width: 100%;
-            height: 200px;
+            height: 150px;
             object-fit: cover;
             border-radius: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             border: 2px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
         .scene-title {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
             color: var(--secondary);
             text-align: center;
         }
         
         .scene-description {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 12px;
             text-align: center;
         }
         
         .question {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: bold;
             text-align: center;
-            margin: 20px 0;
-            padding: 15px;
+            margin: 15px 0;
+            padding: 12px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             border-left: 4px solid var(--accent);
             animation: slideIn 0.5s ease-out;
+            word-break: break-word;
         }
         
         @keyframes slideIn {
@@ -259,7 +273,14 @@
         .input-container {
             display: flex;
             gap: 10px;
-            margin-top: 20px;
+            margin-top: 15px;
+            flex-direction: column;
+        }
+        
+        @media (min-width: 768px) {
+            .input-container {
+                flex-direction: row;
+            }
         }
         
         input {
@@ -272,6 +293,7 @@
             font-size: 1rem;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             transition: all 0.3s;
+            width: 100%;
         }
         
         input:focus {
@@ -281,7 +303,7 @@
         }
         
         button {
-            padding: 12px 25px;
+            padding: 12px 20px;
             border: none;
             border-radius: 8px;
             background: linear-gradient(45deg, var(--secondary), var(--accent));
@@ -290,6 +312,13 @@
             cursor: pointer;
             transition: all 0.3s;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            width: 100%;
+        }
+        
+        @media (min-width: 768px) {
+            button {
+                width: auto;
+            }
         }
         
         button:hover {
@@ -302,8 +331,8 @@
         }
         
         .feedback {
-            margin-top: 20px;
-            padding: 15px;
+            margin-top: 15px;
+            padding: 12px;
             border-radius: 10px;
             text-align: center;
             font-weight: bold;
@@ -335,7 +364,7 @@
         }
         
         .hint {
-            margin-top: 15px;
+            margin-top: 12px;
             padding: 10px;
             background: rgba(255, 193, 7, 0.2);
             border-radius: 8px;
@@ -350,11 +379,11 @@
         }
         
         .progress-container {
-            margin-top: 20px;
+            margin-top: 15px;
             background: rgba(0, 0, 0, 0.2);
             border-radius: 10px;
             overflow: hidden;
-            height: 10px;
+            height: 8px;
         }
         
         .progress-bar {
@@ -367,14 +396,14 @@
         
         .stage-indicator {
             text-align: center;
-            margin-top: 10px;
+            margin-top: 8px;
             font-size: 0.9rem;
             opacity: 0.8;
         }
         
         .active-skill {
-            margin-top: 20px;
-            padding: 15px;
+            margin-top: 15px;
+            padding: 12px;
             background: rgba(255, 111, 0, 0.2);
             border-radius: 10px;
             text-align: center;
@@ -389,8 +418,8 @@
         .skills-container {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
-            padding: 20px;
-            margin-top: 20px;
+            padding: 15px;
+            margin-top: 15px;
         }
         
         .skills-list {
@@ -428,21 +457,23 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            padding: 15px;
         }
         
         .setup-form {
             background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
+            padding: 25px;
             border-radius: 15px;
-            width: 90%;
+            width: 100%;
             max-width: 400px;
             text-align: center;
             color: var(--text);
         }
         
         .setup-form h2 {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: var(--primary);
+            font-size: 1.5rem;
         }
         
         .setup-form input {
@@ -455,6 +486,7 @@
             justify-content: center;
             gap: 10px;
             margin: 15px 0;
+            flex-wrap: wrap;
         }
         
         .avatar-option {
@@ -483,13 +515,14 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            padding: 15px;
         }
         
         .skill-modal {
             background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
+            padding: 25px;
             border-radius: 15px;
-            width: 90%;
+            width: 100%;
             max-width: 600px;
             text-align: center;
             color: var(--text);
@@ -498,15 +531,21 @@
         }
         
         .skill-modal h2 {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: var(--primary);
         }
         
         .skill-options {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin: 15px 0;
+        }
+        
+        @media (min-width: 768px) {
+            .skill-options {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
         }
         
         .skill-option {
@@ -532,15 +571,15 @@
         
         .rules {
             background: rgba(0, 0, 0, 0.2);
-            padding: 15px;
+            padding: 12px;
             border-radius: 10px;
-            margin-top: 20px;
+            margin-top: 15px;
             font-size: 0.9rem;
             line-height: 1.5;
         }
         
         .rules h3 {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: var(--secondary);
         }
         
@@ -552,21 +591,34 @@
             margin-bottom: 5px;
         }
         
-        @media (max-width: 600px) {
-            .title {
-                font-size: 1.8rem;
+        /* Responsive improvements for tablets */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .game-content {
+                padding: 20px;
             }
             
-            .game-content {
+            .scene-image {
+                height: 180px;
+            }
+            
+            .stats {
                 padding: 15px;
             }
             
-            .input-container {
-                flex-direction: column;
+            .player-avatar {
+                width: 45px;
+                height: 45px;
+            }
+        }
+        
+        /* Responsive improvements for large screens */
+        @media (min-width: 1025px) {
+            .game-content {
+                padding: 30px;
             }
             
-            .skill-options {
-                grid-template-columns: 1fr;
+            .scene-image {
+                height: 200px;
             }
         }
     </style>
