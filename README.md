@@ -799,35 +799,60 @@
                 { question: "Tìm x: x + 25 = 80", answer: "55", hint: "x = 80 - 25" },
                 { question: "Tính: 45 × 6", answer: "270", hint: "40 × 6 = 240, 5 × 6 = 30, tổng 270" },
                 { question: "Chia: 144 ÷ 12", answer: "12", hint: "12 × 12 = 144" },
-                { question: "Tính: 3² + 4²", answer: "25", hint: "3² = 9, 4² = 16, 9 + 16 = 25" }
+                { question: "Tính: 3² + 4²", answer: "25", hint: "3² = 9, 4² = 16, 9 + 16 = 25" },
+                { question: "Tính: 78 - 29", answer: "49", hint: "78 - 20 = 58, 58 - 9 = 49" },
+                { question: "Tính: 15 × 8", answer: "120", hint: "10 × 8 = 80, 5 × 8 = 40, tổng 120" },
+                { question: "Tính: 96 ÷ 8", answer: "12", hint: "80 ÷ 8 = 10, 16 ÷ 8 = 2, tổng 12" },
+                { question: "Tính: 7 × 9", answer: "63", hint: "7 × 10 = 70, 70 - 7 = 63" },
+                { question: "Tính: 256 ÷ 16", answer: "16", hint: "16 × 16 = 256" }
             ],
             science: [
                 { question: "Công thức tính vận tốc", answer: "v = s/t", hint: "Quãng đường chia thời gian" },
                 { question: "Nước sôi ở bao nhiêu độ C?", answer: "100", hint: "Ở điều kiện áp suất tiêu chuẩn" },
                 { question: "Công thức hóa học của nước", answer: "h2o", hint: "2 nguyên tử H, 1 nguyên tử O" },
                 { question: "Tim người có mấy ngăn?", answer: "4", hint: "2 tâm nhĩ, 2 tâm thất" },
-                { question: "Khí nào chiếm tỉ lệ cao nhất trong không khí?", answer: "nitơ", hint: "Khoảng 78%" }
+                { question: "Khí nào chiếm tỉ lệ cao nhất trong không khí?", answer: "nitơ", hint: "Khoảng 78%" },
+                { question: "Nguyên tố nào phổ biến nhất trong vũ trụ?", answer: "hydro", hint: "Nguyên tố nhẹ nhất" },
+                { question: "Cây xanh quang hợp vào thời gian nào?", answer: "ban ngày", hint: "Cần ánh sáng mặt trời" },
+                { question: "Trái Đất quay quanh trục mất bao lâu?", answer: "24 giờ", hint: "Một ngày một đêm" },
+                { question: "Kim loại nào dẫn điện tốt nhất?", answer: "bạc", hint: "Sau đó là đồng, vàng, nhôm" },
+                { question: "Nguyên tố nào cần cho sự sống của cây?", answer: "nitơ", hint: "Có trong phân đạm" }
             ],
             english: [
                 { question: "Dịch 'house' sang tiếng Việt", answer: "ngôi nhà", hint: "Nơi để sống" },
                 { question: "Số 15 trong tiếng Anh", answer: "fifteen", hint: "Mười lăm" },
                 { question: "Màu xanh da trời trong tiếng Anh", answer: "blue", hint: "Blue sky" },
                 { question: "Con chó trong tiếng Anh", answer: "dog", hint: "Thú cưng phổ biến" },
-                { question: "Từ 'happy' nghĩa là gì?", answer: "vui vẻ", hint: "Cảm xúc tích cực" }
+                { question: "Từ 'happy' nghĩa là gì?", answer: "vui vẻ", hint: "Cảm xúc tích cực" },
+                { question: "Dịch 'book' sang tiếng Việt", answer: "quyển sách", hint: "Để đọc" },
+                { question: "Số 20 trong tiếng Anh", answer: "twenty", hint: "Hai mươi" },
+                { question: "Màu đỏ trong tiếng Anh", answer: "red", hint: "Màu của máu" },
+                { question: "Con mèo trong tiếng Anh", answer: "cat", hint: "Thú cưng hay leo trèo" },
+                { question: "Từ 'water' nghĩa là gì?", answer: "nước", hint: "Chất lỏng cần cho sự sống" }
             ],
             history: [
                 { question: "Ai là vị vua đầu tiên của nước Văn Lang?", answer: "hùng vương", hint: "Thời đại Hùng Vương" },
                 { question: "Trận Bạch Đằng năm 938 do ai lãnh đạo?", answer: "ngô quyền", hint: "Đánh tan quân Nam Hán" },
                 { question: "Chiến thắng Điện Biên Phủ năm nào?", answer: "1954", hint: "Thế kỷ 20" },
                 { question: "Ai là Chủ tịch nước đầu tiên?", answer: "hồ chí minh", hint: "Bác Hồ" },
-                { question: "Ngày Giải phóng miền Nam?", answer: "30/4/1975", hint: "Ngày thống nhất đất nước" }
+                { question: "Ngày Giải phóng miền Nam?", answer: "30/4/1975", hint: "Ngày thống nhất đất nước" },
+                { question: "Ai là tác giả của Bình Ngô đại cáo?", answer: "nguyễn trãi", hint: "Danh nhân văn hóa thế giới" },
+                { question: "Nhà Lý dời đô về Thăng Long năm nào?", answer: "1010", hint: "Thế kỷ 11" },
+                { question: "Ai lãnh đạo cuộc khởi nghĩa Lam Sơn?", answer: "lê lợi", hint: "Vua Lê Thái Tổ" },
+                { question: "Chiến thắng Ngọc Hồi - Đống Đa năm nào?", answer: "1789", hint: "Thế kỷ 18" },
+                { question: "Ai là vị vua cuối cùng của triều Nguyễn?", answer: "bảo đại", hint: "Vị hoàng đế cuối cùng" }
             ],
             puzzle: [
                 { question: "Con gì càng kéo càng ngắn?", answer: "điếu thuốc lá", hint: "Khi hút sẽ ngắn dần" },
                 { question: "Cái gì càng nhiều càng ít thấy?", answer: "bóng tối", hint: "Khi có ánh sáng" },
                 { question: "Số nào lớn nhất có 2 chữ số?", answer: "99", hint: "Hai chữ số 9" },
                 { question: "1/2 của 100 là bao nhiêu?", answer: "50", hint: "100 chia 2" },
-                { question: "Cái gì bạn có thể giữ nhưng không chạm được?", answer: "lời hứa", hint: "Cam kết bằng lời" }
+                { question: "Cái gì bạn có thể giữ nhưng không chạm được?", answer: "lời hứa", hint: "Cam kết bằng lời" },
+                { question: "Cái gì có thể đi mà không có chân?", answer: "thời gian", hint: "Ngày tháng trôi qua" },
+                { question: "Cái gì càng để lâu càng nhẹ?", answer: "cây nến", hint: "Khi cháy sẽ nhỏ dần" },
+                { question: "Cái gì không ai muốn có nhưng khi có rồi không ai muốn mất?", answer: "tuổi già", hint: "Khi lớn tuổi" },
+                { question: "Cái gì luôn đến mà không bao giờ đến?", answer: "ngày mai", hint: "Khi đến rồi thì thành hôm nay" },
+                { question: "Cái gì càng lấy càng nhiều?", answer: "cái hố", hint: "Khi đào đất lên" }
             ]
         };
 
@@ -839,6 +864,7 @@
             let currentSkills = [];
             let selectedSkill = null;
             let questionsSinceLastSkill = 0;
+            let usedQuestions = []; // Mảng lưu các câu hỏi đã sử dụng
             
             const gameData = {
                 currentStage: 1,
@@ -913,6 +939,7 @@
             
             // Khởi tạo trò chơi
             function initializeGame() {
+                usedQuestions = []; // Reset danh sách câu hỏi đã dùng
                 generateNewStage();
                 updateHearts();
                 updateScore();
@@ -924,7 +951,23 @@
                 const categories = Object.keys(questionDatabase);
                 const randomCategory = categories[Math.floor(Math.random() * categories.length)];
                 const questions = questionDatabase[randomCategory];
-                const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+                
+                // Lọc ra những câu hỏi chưa được sử dụng
+                const availableQuestions = questions.filter(q => 
+                    !usedQuestions.includes(q.question)
+                );
+                
+                // Nếu đã dùng hết câu hỏi, reset danh sách đã dùng
+                if (availableQuestions.length === 0) {
+                    usedQuestions = [];
+                    generateNewStage();
+                    return;
+                }
+                
+                const randomQuestion = availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
+                
+                // Thêm câu hỏi vào danh sách đã dùng
+                usedQuestions.push(randomQuestion.question);
                 
                 gameData.stages.push({
                     title: `Màn ${gameData.currentStage}: Thử thách ${randomCategory}`,
@@ -984,7 +1027,7 @@
                     });
                     
                     if (selectedSkill) {
-                        elements.activeSkillDescription.textContent = `${selectedSkill.name}: ${skill.effect}`;
+                        elements.activeSkillDescription.textContent = `${selectedSkill.name}: ${selectedSkill.effect}`;
                         elements.activeSkill.style.display = 'block';
                     }
                 }
@@ -1208,6 +1251,7 @@
                 currentSkills = [];
                 selectedSkill = null;
                 questionsSinceLastSkill = 0;
+                usedQuestions = [];
                 
                 initializeGame();
                 
