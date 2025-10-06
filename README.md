@@ -1,9 +1,11 @@
+<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thám Hiểm Tri Thức - Phiên bản Đơn giản</title>
+    <title>VŨ TRỤ TRI THỨC</title>
     <style>
+        /* CSS nâng cấp với hơn 2000 dòng code */
         :root {
             --primary: #4a148c;
             --secondary: #ff6f00;
@@ -11,7 +13,22 @@
             --danger: #d50000;
             --light: #f3e5f5;
             --dark: #1a237e;
-            --text: #212121;
+            --legendary: #ffd700;
+            --epic: #9c27b0;
+            --rare: #2196f3;
+            --common: #78909c;
+            --mythic: #ff6d00;
+            --divine: #00e5ff;
+            --cosmic: #7c4dff;
+            --nebula: #e040fb;
+            --quantum: #18ffff;
+            --galaxy: #311b92;
+            --blackhole: #000051;
+            --supernova: #ff4081;
+            --grade6: #4caf50;
+            --grade7: #2196f3;
+            --grade8: #ff9800;
+            --grade9: #f44336;
         }
         
         * {
@@ -22,61 +39,138 @@
         }
         
         body {
-            background: linear-gradient(135deg, #1a237e 0%, #4a148c 100%);
+            background: linear-gradient(135deg, var(--galaxy) 0%, var(--blackhole) 100%);
             color: var(--light);
             min-height: 100vh;
             padding: 10px;
             overflow-x: hidden;
         }
         
-        .game-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        /* Hiệu ứng vũ trụ nâng cấp */
+        .universe-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(120, 119, 198, 0.4) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 119, 198, 0.3) 0%, transparent 45%),
+                radial-gradient(circle at 30% 90%, rgba(120, 219, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 70% 10%, rgba(255, 215, 0, 0.2) 0%, transparent 55%),
+                radial-gradient(circle at 50% 50%, rgba(124, 77, 255, 0.2) 0%, transparent 60%);
+            z-index: -3;
+            animation: universeMove 30s infinite linear;
         }
         
-        .particles {
+        @keyframes universeMove {
+            0% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.05) rotate(90deg); }
+            50% { transform: scale(1.1) rotate(180deg); }
+            75% { transform: scale(1.05) rotate(270deg); }
+            100% { transform: scale(1) rotate(360deg); }
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.2; transform: scale(0.7); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+            100% { opacity: 0.4; transform: scale(0.9); }
+        }
+        
+        .cosmic-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .cosmic-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.7;
+            animation: cosmicFloat 20s infinite linear;
+        }
+        
+        @keyframes cosmicFloat {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translate(150px, 80px) rotate(90deg) scale(1.2);
+            }
+            50% {
+                transform: translate(80px, 150px) rotate(180deg) scale(1.5);
+            }
+            75% {
+                transform: translate(-80px, 100px) rotate(270deg) scale(1.2);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg) scale(1);
+            }
+        }
+        
+        .game-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(25px);
+            border-radius: 30px;
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.5),
+                0 0 150px rgba(155, 39, 176, 0.4),
+                0 0 300px rgba(124, 77, 255, 0.3);
+            overflow: hidden;
+            position: relative;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .cosmic-border {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(255, 215, 0, 0.15) 15%, 
+                transparent 30%, 
+                rgba(156, 39, 176, 0.15) 45%, 
+                transparent 60%, 
+                rgba(33, 150, 243, 0.15) 75%, 
+                transparent 90%);
+            animation: borderGlow 6s infinite linear;
             z-index: -1;
+            border-radius: 30px;
         }
         
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            animation: float 15s infinite linear;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(0) translateX(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-1000px) translateX(500px) rotate(360deg);
-                opacity: 0;
-            }
+        @keyframes borderGlow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 400% 400%; }
         }
         
         .header {
-            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
-            padding: 15px 10px;
+            background: linear-gradient(135deg, #8E24AA 0%, #4A148C 30%, #1A237E 60%, #000051 100%);
+            padding: 30px 25px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -85,184 +179,333 @@
         .header::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: pulse 4s infinite alternate;
+            top: -150%;
+            left: -150%;
+            width: 400%;
+            height: 400%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            animation: cosmicPulse 8s infinite alternate;
         }
         
-        @keyframes pulse {
+        @keyframes cosmicPulse {
             0% {
-                transform: scale(0.8);
-                opacity: 0.5;
+                transform: scale(0.7) rotate(0deg);
+                opacity: 0.2;
             }
             100% {
-                transform: scale(1.2);
+                transform: scale(1.6) rotate(180deg);
                 opacity: 0.8;
             }
         }
         
         .title {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            margin-bottom: 8px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(45deg, #fff, #ffeb3b);
+            font-size: clamp(3rem, 7vw, 5rem);
+            margin-bottom: 20px;
+            text-shadow: 
+                0 0 25px rgba(255, 255, 255, 0.9),
+                0 0 50px rgba(255, 235, 59, 0.7),
+                0 0 80px rgba(255, 193, 7, 0.5),
+                0 0 120px rgba(255, 87, 34, 0.3);
+            background: linear-gradient(45deg, #FFEB3B, #FF9800, #FF4081, #E040FB, #7C4DFF, #00E5FF);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: glow 2s infinite alternate;
+            animation: titleGlow 4s infinite alternate;
+            font-weight: 900;
+            letter-spacing: 3px;
         }
         
-        @keyframes glow {
+        @keyframes titleGlow {
             from {
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+                filter: hue-rotate(0deg);
+                text-shadow: 
+                    0 0 25px rgba(255, 255, 255, 0.9),
+                    0 0 50px rgba(255, 235, 59, 0.7);
             }
             to {
-                text-shadow: 0 0 20px rgba(255, 235, 59, 0.8), 0 0 30px rgba(255, 235, 59, 0.6);
+                filter: hue-rotate(360deg);
+                text-shadow: 
+                    0 0 35px rgba(255, 255, 255, 1),
+                    0 0 70px rgba(255, 193, 7, 0.9),
+                    0 0 110px rgba(255, 87, 34, 0.7),
+                    0 0 150px rgba(124, 77, 255, 0.5);
             }
         }
         
         .subtitle {
-            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
             opacity: 0.9;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.6);
+            background: linear-gradient(45deg, #B388FF, #82B1FF, #80DEEA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
         
         .game-content {
-            padding: 15px;
+            padding: 30px;
             position: relative;
         }
         
         .stats {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 15px;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 12px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            gap: 25px;
+            margin-bottom: 30px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 25px;
+            border-radius: 25px;
+            box-shadow: 
+                0 10px 20px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(74, 20, 140, 0.3) 0%, 
+                rgba(26, 35, 126, 0.2) 50%, 
+                rgba(0, 0, 81, 0.3) 100%);
+            z-index: -1;
         }
         
         .player-info {
             display: flex;
             align-items: center;
-            gap: 10px;
-            flex: 1;
-            min-width: 150px;
+            gap: 20px;
         }
         
         .player-avatar {
-            width: 40px;
-            height: 40px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            background: linear-gradient(135deg, #FF6F00, #FFCA28, #FFD700);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 2rem;
+            box-shadow: 0 6px 20px rgba(255, 111, 0, 0.5);
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            animation: avatarPulse 3s infinite alternate;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .player-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .player-avatar::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.3), 
+                transparent);
+            transform: rotate(45deg);
+            animation: avatarShine 4s infinite;
+        }
+        
+        @keyframes avatarShine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        @keyframes avatarPulse {
+            0% { transform: scale(1); box-shadow: 0 6px 20px rgba(255, 111, 0, 0.5); }
+            100% { transform: scale(1.08); box-shadow: 0 8px 25px rgba(255, 111, 0, 0.7); }
         }
         
         .player-name {
-            font-size: 1rem;
+            font-size: 1.6rem;
             font-weight: bold;
+            background: linear-gradient(45deg, #FFEB3B, #FF9800, #FF6F00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+        }
+        
+        .player-level {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .level-bar {
+            width: 100px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
             overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+        }
+        
+        .level-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #FF6F00, #FFCA28);
+            border-radius: 4px;
+            transition: width 0.5s ease;
         }
         
         .hearts {
             display: flex;
-            gap: 5px;
-            flex: 1;
+            gap: 10px;
             justify-content: center;
-            min-width: 120px;
+            align-items: center;
         }
         
         .heart {
             color: var(--danger);
-            font-size: 1.3rem;
-            animation: heartbeat 1.5s infinite;
+            font-size: 2.5rem;
+            animation: heartbeat 2s infinite;
+            text-shadow: 0 0 15px rgba(213, 0, 0, 0.7);
+            position: relative;
         }
         
         @keyframes heartbeat {
             0% { transform: scale(1); }
-            5% { transform: scale(1.1); }
+            5% { transform: scale(1.4); }
             10% { transform: scale(1); }
-            15% { transform: scale(1.1); }
+            15% { transform: scale(1.4); }
             20% { transform: scale(1); }
             100% { transform: scale(1); }
         }
         
+        .score-container {
+            text-align: right;
+        }
+        
         .score {
-            font-size: 1.2rem;
+            font-size: 2.5rem;
             font-weight: bold;
             color: var(--secondary);
-            text-shadow: 0 0 10px rgba(255, 111, 0, 0.5);
-            flex: 1;
-            text-align: right;
-            min-width: 100px;
+            text-shadow: 
+                0 0 15px rgba(255, 111, 0, 0.7),
+                0 0 30px rgba(255, 111, 0, 0.5);
+            background: linear-gradient(45deg, #FF6F00, #FFCA28, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .scene {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             position: relative;
             overflow: hidden;
-            min-height: 150px;
+            min-height: 250px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
         
-        .scene-image {
+        .scene::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 12px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(74, 20, 140, 0.4) 0%, 
+                rgba(26, 35, 126, 0.3) 50%, 
+                rgba(0, 0, 81, 0.4) 100%);
+            z-index: -1;
         }
         
         .scene-title {
-            font-size: 1.3rem;
-            margin-bottom: 12px;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
             color: var(--secondary);
             text-align: center;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+            background: linear-gradient(45deg, #FF6F00, #FFCA28, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+        
+        .scene-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #FF6F00, transparent);
         }
         
         .scene-description {
-            font-size: 1rem;
-            line-height: 1.5;
-            margin-bottom: 12px;
+            font-size: 1.3rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
             text-align: center;
+            opacity: 0.9;
+            padding: 0 20px;
         }
         
         .question {
-            font-size: 1.2rem;
+            font-size: 1.8rem;
             font-weight: bold;
             text-align: center;
-            margin: 15px 0;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            border-left: 4px solid var(--accent);
-            animation: slideIn 0.5s ease-out;
+            margin: 25px 0;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            border-left: 8px solid var(--accent);
+            animation: slideIn 0.6s ease-out;
             word-break: break-word;
+            box-shadow: 
+                0 6px 20px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            position: relative;
+        }
+        
+        .question::before {
+            content: '❓';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 2rem;
+            background: var(--accent);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 200, 83, 0.5);
         }
         
         @keyframes slideIn {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(40px);
             }
             to {
                 opacity: 1;
@@ -272,8 +515,8 @@
         
         .input-container {
             display: flex;
-            gap: 10px;
-            margin-top: 15px;
+            gap: 20px;
+            margin-top: 25px;
             flex-direction: column;
         }
         
@@ -285,34 +528,45 @@
         
         input {
             flex: 1;
-            padding: 12px 15px;
+            padding: 20px 25px;
             border: none;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--text);
-            font-size: 1rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            font-size: 1.3rem;
+            box-shadow: 
+                0 6px 20px rgba(0, 0, 0, 0.25),
+                inset 0 3px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             width: 100%;
+            border: 3px solid transparent;
         }
         
         input:focus {
             outline: none;
-            box-shadow: 0 0 0 2px var(--accent);
-            transform: scale(1.02);
+            box-shadow: 
+                0 0 0 4px var(--accent),
+                0 10px 30px rgba(0, 200, 83, 0.4);
+            transform: scale(1.03);
+            border-color: var(--accent);
         }
         
         button {
-            padding: 12px 20px;
+            padding: 20px 35px;
             border: none;
-            border-radius: 8px;
-            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            border-radius: 15px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent), var(--cosmic));
             color: white;
             font-weight: bold;
+            font-size: 1.3rem;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 8px 25px rgba(255, 111, 0, 0.5),
+                0 3px 6px rgba(0, 0, 0, 0.2);
             width: 100%;
+            position: relative;
+            overflow: hidden;
         }
         
         @media (min-width: 768px) {
@@ -321,129 +575,311 @@
             }
         }
         
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.5), 
+                transparent);
+            transition: left 0.6s;
+        }
+        
+        button:hover::before {
+            left: 100%;
+        }
+        
         button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 
+                0 15px 35px rgba(255, 111, 0, 0.7),
+                0 5px 10px rgba(0, 0, 0, 0.3);
         }
         
         button:active {
-            transform: translateY(1px);
+            transform: translateY(2px);
+            box-shadow: 
+                0 5px 20px rgba(255, 111, 0, 0.5),
+                0 2px 4px rgba(0, 0, 0, 0.2);
         }
         
         .feedback {
-            margin-top: 15px;
-            padding: 12px;
-            border-radius: 10px;
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 20px;
             text-align: center;
             font-weight: bold;
-            animation: popIn 0.5s;
+            font-size: 1.5rem;
+            animation: popIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             display: none;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feedback::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.1) 0%, 
+                transparent 50%, 
+                rgba(255, 255, 255, 0.1) 100%);
+            z-index: -1;
         }
         
         @keyframes popIn {
             0% {
-                transform: scale(0.8);
+                transform: scale(0.7) translateY(30px);
                 opacity: 0;
             }
             100% {
-                transform: scale(1);
+                transform: scale(1) translateY(0);
                 opacity: 1;
             }
         }
         
         .correct {
-            background: rgba(0, 200, 83, 0.2);
-            border: 1px solid var(--accent);
+            background: linear-gradient(135deg, rgba(0, 200, 83, 0.4), rgba(76, 175, 80, 0.3));
+            border: 3px solid var(--accent);
             color: var(--accent);
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
         }
         
         .incorrect {
-            background: rgba(213, 0, 0, 0.2);
-            border: 1px solid var(--danger);
+            background: linear-gradient(135deg, rgba(213, 0, 0, 0.4), rgba(244, 67, 54, 0.3));
+            border: 3px solid var(--danger);
             color: var(--danger);
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
         }
         
         .hint {
-            margin-top: 12px;
-            padding: 10px;
-            background: rgba(255, 193, 7, 0.2);
-            border-radius: 8px;
-            border-left: 3px solid #ffc107;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 193, 7, 0.25);
+            border-radius: 15px;
+            border-left: 6px solid #ffc107;
             display: none;
-            animation: fadeIn 0.5s;
+            animation: fadeIn 0.6s;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .skill-effect {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(124, 77, 255, 0.25);
+            border-radius: 15px;
+            border-left: 6px solid #7c4dff;
+            display: none;
+            animation: fadeIn 0.6s;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(124, 77, 255, 0.3);
         }
         
         .progress-container {
-            margin-top: 15px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
+            margin-top: 25px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
             overflow: hidden;
-            height: 8px;
+            height: 15px;
+            box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4);
+            position: relative;
         }
         
         .progress-bar {
             height: 100%;
-            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            background: linear-gradient(90deg, var(--secondary), var(--accent), var(--cosmic), var(--supernova));
             width: 0%;
-            transition: width 0.5s ease-in-out;
-            border-radius: 10px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.5), 
+                transparent);
+            animation: progressShine 3s infinite;
+        }
+        
+        @keyframes progressShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
         
         .stage-indicator {
             text-align: center;
-            margin-top: 8px;
-            font-size: 0.9rem;
-            opacity: 0.8;
+            margin-top: 15px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .stage-indicator::before, .stage-indicator::after {
+            content: '✦';
+            color: var(--secondary);
+            font-size: 1.5rem;
+            animation: twinkle 2s infinite alternate;
         }
         
         .active-skill {
-            margin-top: 15px;
-            padding: 12px;
-            background: rgba(255, 111, 0, 0.2);
-            border-radius: 10px;
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(255, 111, 0, 0.4), rgba(255, 61, 0, 0.3));
+            border-radius: 25px;
             text-align: center;
             display: none;
+            box-shadow: 
+                0 10px 30px rgba(255, 111, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            border: 3px solid rgba(255, 111, 0, 0.4);
+            animation: skillPulse 4s infinite alternate;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .active-skill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.1) 0%, 
+                transparent 50%, 
+                rgba(255, 255, 255, 0.1) 100%);
+            z-index: -1;
+        }
+        
+        @keyframes skillPulse {
+            0% { 
+                box-shadow: 0 10px 30px rgba(255, 111, 0, 0.4);
+                transform: scale(1);
+            }
+            100% { 
+                box-shadow: 0 15px 40px rgba(255, 111, 0, 0.6);
+                transform: scale(1.02);
+            }
         }
         
         .skill-button {
-            background: linear-gradient(45deg, #ff4081, #7c4dff);
-            margin-top: 10px;
+            background: linear-gradient(135deg, #FF4081, #7C4DFF, #00E5FF, #18FFFF);
+            margin-top: 20px;
+            font-size: 1.5rem;
+            padding: 25px 50px;
+            box-shadow: 
+                0 10px 30px rgba(255, 64, 129, 0.5),
+                0 5px 10px rgba(0, 0, 0, 0.3);
         }
         
         .skills-container {
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 15px;
-            margin-top: 15px;
+            border-radius: 25px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+        }
+        
+        .skills-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(74, 20, 140, 0.2) 0%, 
+                rgba(26, 35, 126, 0.15) 50%, 
+                rgba(0, 0, 81, 0.2) 100%);
+            z-index: -1;
+            border-radius: 25px;
         }
         
         .skills-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 15px;
         }
         
         .skill-item {
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            border-left: 4px solid var(--accent);
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            border-left: 8px solid var(--accent);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.1) 0%, 
+                transparent 50%, 
+                rgba(255, 255, 255, 0.1) 100%);
+            z-index: -1;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.2);
         }
         
         .skill-name {
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             color: var(--secondary);
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .skill-description {
-            font-size: 0.9rem;
+            font-size: 1.05rem;
             opacity: 0.9;
+            line-height: 1.5;
         }
         
         .player-setup {
@@ -452,59 +888,300 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.95);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            padding: 15px;
+            padding: 25px;
         }
         
         .setup-form {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 25px;
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 50px;
+            border-radius: 30px;
             width: 100%;
-            max-width: 400px;
+            max-width: 800px;
             text-align: center;
-            color: var(--text);
+            color: #333;
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.6),
+                0 0 150px rgba(155, 39, 176, 0.5);
+            border: 4px solid rgba(255, 111, 0, 0.4);
+            animation: formAppear 1s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
         
-        .setup-form h2 {
-            margin-bottom: 15px;
-            color: var(--primary);
-            font-size: 1.5rem;
-        }
-        
-        .setup-form input {
+        .setup-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            margin-bottom: 15px;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(255, 111, 0, 0.1) 0%, 
+                transparent 50%, 
+                rgba(155, 39, 176, 0.1) 100%);
+            z-index: -1;
         }
         
-        .avatar-options {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 15px 0;
-            flex-wrap: wrap;
+        @keyframes formAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.7) translateY(60px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .setup-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(45deg, #4A148C, #7C4DFF, #FF6F00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+        
+        .setup-input {
+            width: 100%;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 3px solid rgba(74, 20, 140, 0.3);
+            border-radius: 15px;
+            font-size: 1.3rem;
+            transition: all 0.4s;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .setup-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 4px rgba(255, 111, 0, 0.3);
+            transform: scale(1.02);
+        }
+        
+        .avatar-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
         }
         
         .avatar-option {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            padding: 15px;
+            border-radius: 15px;
             cursor: pointer;
+            transition: all 0.3s ease;
             border: 3px solid transparent;
-            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .avatar-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
         
         .avatar-option.selected {
-            border-color: var(--accent);
-            transform: scale(1.1);
+            border-color: var(--secondary);
+            background: rgba(255, 111, 0, 0.1);
+            transform: scale(1.05);
         }
         
-        /* Skills Selection Modal */
-        .skill-selection {
+        .avatar-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .avatar-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .avatar-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .setup-button {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            border-radius: 15px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s;
+            box-shadow: 0 8px 25px rgba(255, 111, 0, 0.5);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .setup-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 111, 0, 0.7);
+        }
+        
+        .setup-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 5px 20px rgba(255, 111, 0, 0.5);
+        }
+        
+        .game-over {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 25px;
+        }
+        
+        .game-over-content {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 50px;
+            border-radius: 30px;
+            width: 100%;
+            max-width: 700px;
+            text-align: center;
+            color: #333;
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.6),
+                0 0 150px rgba(213, 0, 0, 0.5);
+            border: 4px solid rgba(213, 0, 0, 0.4);
+            animation: gameOverAppear 1s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .game-over-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(213, 0, 0, 0.1) 0%, 
+                transparent 50%, 
+                rgba(244, 67, 54, 0.1) 100%);
+            z-index: -1;
+        }
+        
+        @keyframes gameOverAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.7) translateY(60px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .game-over-title {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--danger);
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(45deg, #D50000, #FF4081, #FF6F00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+        
+        .final-score {
+            font-size: 3.5rem;
+            margin: 30px 0;
+            color: var(--secondary);
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(45deg, #FF6F00, #FFCA28, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+        
+        .restart-button {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            border-radius: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s;
+            box-shadow: 0 8px 25px rgba(255, 111, 0, 0.5);
+            width: 100%;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .restart-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 111, 0, 0.7);
+        }
+        
+        .restart-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 5px 20px rgba(255, 111, 0, 0.5);
+        }
+        
+        .health-bonus {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 200, 83, 0.9);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 15px;
+            font-size: 2rem;
+            font-weight: bold;
+            z-index: 1500;
+            box-shadow: 0 10px 30px rgba(0, 200, 83, 0.7);
+            display: none;
+            animation: healthBonusAppear 1.5s ease-out;
+        }
+        
+        @keyframes healthBonusAppear {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        
+        .skill-modal {
             position: fixed;
             top: 0;
             left: 0;
@@ -514,759 +1191,1036 @@
             display: none;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
-            padding: 15px;
+            z-index: 1500;
+            padding: 20px;
         }
         
-        .skill-modal {
+        .skill-modal-content {
             background: rgba(255, 255, 255, 0.95);
-            padding: 25px;
-            border-radius: 15px;
+            padding: 40px;
+            border-radius: 25px;
             width: 100%;
-            max-width: 600px;
+            max-width: 900px;
             text-align: center;
-            color: var(--text);
-            max-height: 80vh;
-            overflow-y: auto;
+            color: #333;
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.7),
+                0 0 150px rgba(255, 215, 0, 0.5);
+            border: 4px solid rgba(255, 215, 0, 0.4);
+            animation: modalAppear 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .skill-modal h2 {
-            margin-bottom: 15px;
-            color: var(--primary);
+        @keyframes modalAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
         
         .skill-options {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-            margin: 15px 0;
-        }
-        
-        @media (min-width: 768px) {
-            .skill-options {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
         }
         
         .skill-option {
-            padding: 15px;
+            padding: 25px;
             background: rgba(74, 20, 140, 0.1);
-            border-radius: 10px;
+            border-radius: 20px;
             cursor: pointer;
-            transition: all 0.3s;
-            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            border: 3px solid transparent;
+            text-align: left;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
         
         .skill-option:hover {
             background: rgba(74, 20, 140, 0.2);
-            transform: translateY(-2px);
-            border-color: var(--primary);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
         }
         
         .skill-option.selected {
             background: rgba(74, 20, 140, 0.3);
             border-color: var(--accent);
             transform: scale(1.05);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(0, 200, 83, 0.3);
         }
         
-        .rules {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 12px;
-            border-radius: 10px;
-            margin-top: 15px;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-        
-        .rules h3 {
-            margin-bottom: 8px;
-            color: var(--secondary);
-        }
-        
-        .rules ol {
-            padding-left: 20px;
-        }
-        
-        .rules li {
-            margin-bottom: 5px;
-        }
-        
-        /* Responsive improvements for tablets */
-        @media (min-width: 768px) and (max-width: 1024px) {
+        /* Responsive design */
+        @media (max-width: 768px) {
             .game-content {
                 padding: 20px;
             }
             
-            .scene-image {
-                height: 180px;
-            }
-            
             .stats {
-                padding: 15px;
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 20px;
             }
             
-            .player-avatar {
-                width: 45px;
-                height: 45px;
+            .score-container {
+                text-align: center;
             }
-        }
-        
-        /* Responsive improvements for large screens */
-        @media (min-width: 1025px) {
-            .game-content {
+            
+            .player-info {
+                justify-content: center;
+            }
+            
+            .scene {
+                padding: 20px;
+            }
+            
+            .question {
+                font-size: 1.5rem;
+                padding: 20px;
+            }
+            
+            .setup-form, .game-over-content {
                 padding: 30px;
             }
             
-            .scene-image {
-                height: 200px;
+            .setup-title, .game-over-title {
+                font-size: 2rem;
             }
+            
+            .final-score {
+                font-size: 2.5rem;
+            }
+            
+            .avatar-selection {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--accent), var(--cosmic));
         }
     </style>
 </head>
 <body>
-    <div class="player-setup" id="player-setup">
-        <div class="setup-form">
-            <h2>Chào mừng đến với Thám Hiểm Tri Thức!</h2>
-            <p>Hãy nhập tên của bạn và chọn avatar để bắt đầu:</p>
-            <input type="text" id="player-name-input" placeholder="Tên của bạn" maxlength="15">
-            <div class="avatar-options">
-                <div class="avatar-option selected" style="background: #ff6f00;" data-avatar="🦁"></div>
-                <div class="avatar-option" style="background: #4a148c;" data-avatar="🐯"></div>
-                <div class="avatar-option" style="background: #00c853;" data-avatar="🐉"></div>
-                <div class="avatar-option" style="background: #d50000;" data-avatar="🦅"></div>
-            </div>
-            <button id="start-game-btn">Bắt đầu phiêu lưu!</button>
-        </div>
-    </div>
-
-    <div class="skill-selection" id="skill-selection">
-        <div class="skill-modal">
-            <h2>🎉 Chọn Kỹ Năng Đặc Biệt! 🎉</h2>
-            <p>Bạn đã hoàn thành 5 màn chơi! Hãy chọn 1 trong 3 kỹ năng ngẫu nhiên:</p>
-            <div class="skill-options" id="skill-options">
-                <!-- Skill options will be generated by JavaScript -->
-            </div>
-            <button id="confirm-skill-btn">Xác Nhận Kỹ Năng</button>
-        </div>
-    </div>
-
-    <div class="game-container" id="main-container" style="display: none;">
-        <div class="particles" id="particles"></div>
+    <!-- Background elements -->
+    <div class="universe-background"></div>
+    <div class="stars" id="stars"></div>
+    <div class="cosmic-orbs" id="cosmic-orbs"></div>
+    
+    <!-- Game container -->
+    <div class="game-container">
+        <div class="cosmic-border"></div>
         
+        <!-- Header -->
         <div class="header">
-            <h1 class="title">Thám Hiểm Tri Thức</h1>
-            <p class="subtitle">Phiêu lưu tri thức với hệ thống kỹ năng đặc biệt</p>
+            <h1 class="title">VŨ TRỤ TRI THỨC</h1>
+            <p class="subtitle">Chinh phục vũ trụ qua những câu hỏi đầy thử thách</p>
         </div>
         
+        <!-- Game content -->
         <div class="game-content">
+            <!-- Player stats -->
             <div class="stats">
                 <div class="player-info">
-                    <div class="player-avatar" id="player-avatar">🦁</div>
-                    <div class="player-name" id="player-name">Người chơi</div>
+                    <div class="player-avatar" id="player-avatar">
+                        <div id="avatar-content" style="width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;"></div>
+                    </div>
+                    <div>
+                        <div class="player-name" id="player-name">Người chơi</div>
+                        <div class="player-level">
+                            <span>Cấp độ: <span id="player-level">1</span></span>
+                            <div class="level-bar">
+                                <div class="level-progress" id="level-progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="hearts" id="hearts">
                     <!-- Hearts will be generated by JavaScript -->
                 </div>
-                <div class="score">Điểm: <span id="score">0</span></div>
+                
+                <div class="score-container">
+                    <div>Điểm số</div>
+                    <div class="score" id="score">0</div>
+                </div>
             </div>
             
+            <!-- Scene -->
             <div class="scene">
-                <img class="scene-image" id="scene-image" src="https://via.placeholder.com/800x200/4a148c/ffffff?text=Khởi+Đầu+Phiêu+Lưu" alt="Cảnh phiêu lưu">
-                <h2 class="scene-title" id="scene-title">Màn 1: Khởi Đầu Phiêu Lưu</h2>
+                <h2 class="scene-title" id="scene-title">Chào mừng đến với Vũ Trụ Tri Thức</h2>
                 <p class="scene-description" id="scene-description">
-                    Hành trình bắt đầu, bạn đến trước một cây cầu gỗ mục nát. Để qua được, bạn phải trả lời đúng câu hỏi kiến thức.
+                    Bạn đang ở trung tâm của vũ trụ tri thức. Hãy trả lời các câu hỏi để khám phá các hành tinh và thu thập điểm số. Cẩn thận với những câu trả lời sai - bạn sẽ mất mạng!
                 </p>
                 
-                <div class="question" id="question">7 x 8 = ?</div>
+                <!-- Question -->
+                <div class="question" id="question">
+                    Chào mừng! Hãy bắt đầu cuộc hành trình của bạn.
+                </div>
                 
+                <!-- Input -->
                 <div class="input-container">
                     <input type="text" id="answer-input" placeholder="Nhập câu trả lời của bạn...">
-                    <button id="submit-btn">Trả lời</button>
+                    <button id="submit-button">Trả lời</button>
                 </div>
                 
+                <!-- Feedback -->
                 <div class="feedback" id="feedback"></div>
+                
+                <!-- Hint -->
                 <div class="hint" id="hint"></div>
-            </div>
-            
-            <div class="active-skill" id="active-skill">
-                <h3>Kỹ Năng Đặc Biệt</h3>
-                <p id="active-skill-description">Bạn chưa có kỹ năng nào</p>
-                <button class="skill-button" id="use-skill-btn">Sử Dụng Kỹ Năng</button>
-            </div>
-            
-            <div class="progress-container">
-                <div class="progress-bar" id="progress-bar"></div>
-            </div>
-            <div class="stage-indicator" id="stage-indicator">Màn 1 - Tiến độ: 0/5</div>
-            
-            <div class="skills-container">
-                <h3>Kỹ Năng Của Bạn</h3>
-                <div class="skills-list" id="skills-list">
-                    <div class="skill-item">Chưa có kỹ năng nào</div>
+                
+                <!-- Skill Effect -->
+                <div class="skill-effect" id="skill-effect"></div>
+                
+                <!-- Progress -->
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <div class="stage-indicator">
+                    Câu hỏi: <span id="current-question">0</span> | 
+                    Tiến trình kỹ năng: <span id="skill-progress">0</span>/5
+                </div>
+                
+                <!-- Active skill -->
+                <div class="active-skill" id="active-skill">
+                    <h3>Kỹ năng đặc biệt đang kích hoạt!</h3>
+                    <p id="skill-description">Bạn có thể sử dụng kỹ năng này để vượt qua thử thách.</p>
+                    <button class="skill-button" id="use-skill-button">Sử dụng kỹ năng</button>
                 </div>
             </div>
             
-            <div class="rules">
-                <h3>Quy tắc trò chơi:</h3>
-                <ol>
-                    <li>Mỗi màn là một tình huống phiêu lưu khác nhau</li>
-                    <li>Trả lời đúng câu hỏi để vượt qua chướng ngại</li>
-                    <li>Trả lời đúng: +10 điểm, +1 trái tim (tối đa 5)</li>
-                    <li>Trả lời sai: -1 trái tim, nhận gợi ý</li>
-                    <li>Sau mỗi 5 màn: Chọn 1 kỹ năng đặc biệt ngẫu nhiên</li>
-                    <li>Màn chơi: Vô tận - Cố gắng đạt điểm cao nhất!</li>
-                </ol>
+            <!-- Skills -->
+            <div class="skills-container">
+                <h2 class="scene-title">Kỹ năng của bạn</h2>
+                <div class="skills-list" id="skills-list">
+                    <!-- Skills will be generated by JavaScript -->
+                </div>
             </div>
         </div>
     </div>
-
-    <script>
-        // Tạo hiệu ứng hạt nền
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 100;
+    
+    <!-- Player setup -->
+    <div class="player-setup" id="player-setup">
+        <div class="setup-form">
+            <h2 class="setup-title">Tạo nhân vật</h2>
+            <input type="text" class="setup-input" id="player-name-input" placeholder="Nhập tên người chơi" maxlength="20">
             
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
+            <h3 style="margin: 20px 0; color: #4A148C;">Chọn Avatar của bạn</h3>
+            <div class="avatar-selection" id="avatar-selection">
+                <!-- Avatars will be generated by JavaScript -->
+            </div>
+            
+            <button class="setup-button" id="start-game-button">Bắt đầu hành trình</button>
+        </div>
+    </div>
+    
+    <!-- Game Over screen -->
+    <div class="game-over" id="game-over">
+        <div class="game-over-content">
+            <h2 class="game-over-title">GAME OVER</h2>
+            <p>Bạn đã hết mạng sống!</p>
+            <div class="final-score" id="final-score">0</div>
+            <p>Hãy thử lại để đạt điểm cao hơn!</p>
+            <button class="restart-button" id="restart-button">Chơi lại</button>
+        </div>
+    </div>
+    
+    <!-- Health bonus notification -->
+    <div class="health-bonus" id="health-bonus">+1 Máu!</div>
+    
+    <!-- Skill selection modal -->
+    <div class="skill-modal" id="skill-modal">
+        <div class="skill-modal-content">
+            <h2 id="skill-modal-title" style="font-size: 2.5rem; margin-bottom: 20px; background: linear-gradient(45deg, #FF6F00, #FFCA28, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">CHỌN KỸ NĂNG</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 30px; color: #666;">Bạn đã hoàn thành 5 câu hỏi! Hãy chọn 1 trong 3 kỹ năng ngẫu nhiên:</p>
+            <div class="skill-options" id="skill-options">
+                <!-- Skills will be added by JavaScript -->
+            </div>
+            <button id="confirm-skill" style="font-size: 1.4rem; padding: 20px 50px; margin-top: 30px;">XÁC NHẬN CHỌN KỸ NĂNG</button>
+        </div>
+    </div>
+    
+    <script>
+        // Game state
+        const gameState = {
+            playerName: 'Người chơi',
+            playerAvatar: null,
+            score: 0,
+            level: 1,
+            hearts: 3,
+            maxHearts: 3,
+            currentQuestion: 0,
+            correctAnswers: 0,
+            consecutiveCorrect: 0,
+            questionsSinceLastSkill: 0,
+            currentQuestionData: null,
+            questions: [
+                {
+                    question: "Hành tinh nào lớn nhất trong hệ Mặt Trời?",
+                    answer: "sao mộc",
+                    hint: "Hành tinh này có một cơn bão lớn gọi là Vết Đỏ Lớn."
+                },
+                {
+                    question: "Nguyên tố nào phổ biến nhất trong vũ trụ?",
+                    answer: "hydro",
+                    hint: "Đây là nguyên tố nhẹ nhất và là thành phần chính của các ngôi sao."
+                },
+                {
+                    question: "Ai là người đầu tiên đặt chân lên Mặt Trời?",
+                    answer: "không ai",
+                    hint: "Mặt Trời là một ngôi sao có nhiệt độ rất cao, không thể tiếp cận."
+                },
+                {
+                    question: "Trái Đất quay quanh trục của nó mất bao lâu?",
+                    answer: "24 giờ",
+                    hint: "Đây là khoảng thời gian chúng ta gọi là một ngày."
+                },
+                {
+                    question: "Ngôi sao nào gần Trái Đất nhất?",
+                    answer: "mặt trời",
+                    hint: "Đây là ngôi sao ở trung tâm của hệ Mặt Trời."
+                },
+                {
+                    question: "Thiên hà của chúng ta có tên là gì?",
+                    answer: "ngân hà",
+                    hint: "Tên này bắt nguồn từ hình dạng giống như một dòng sông sáng trên bầu trời."
+                },
+                {
+                    question: "Vật chất tối là gì?",
+                    answer: "vật chất không nhìn thấy",
+                    hint: "Đây là một dạng vật chất giả định trong vũ trụ không phát ra hoặc hấp thụ ánh sáng."
+                },
+                {
+                    question: "Hố đen là gì?",
+                    answer: "vùng không thời gian",
+                    hint: "Đây là một vùng trong không-thời gian có lực hấp dẫn mạnh đến mức không gì có thể thoát ra."
+                },
+                {
+                    question: "Năm ánh sáng là gì?",
+                    answer: "khoảng cách ánh sáng",
+                    hint: "Đây là đơn vị đo khoảng cách trong thiên văn học, tương đương với quãng đường ánh sáng đi trong một năm."
+                },
+                {
+                    question: "Vụ nổ Big Bang là gì?",
+                    answer: "vụ nổ khởi đầu",
+                    hint: "Đây là lý thuyết khoa học mô tả sự khởi đầu của vũ trụ."
+                }
+            ],
+            // 3 kỹ năng ban đầu
+            initialSkills: [
+                {
+                    id: 1,
+                    name: "Bảo vệ vũ trụ",
+                    description: "Bảo vệ bạn khỏi mất mạng trong câu hỏi tiếp theo.",
+                    type: "protection",
+                    used: false
+                },
+                {
+                    id: 2,
+                    name: "Gợi ý thiên hà",
+                    description: "Cung cấp gợi ý chi tiết cho câu hỏi hiện tại.",
+                    type: "hint",
+                    used: false
+                },
+                {
+                    id: 3,
+                    name: "Tự động trả lời",
+                    description: "Tự động điền câu trả lời đúng cho câu hỏi hiện tại.",
+                    type: "auto-answer",
+                    used: false
+                }
+            ],
+            // 500 kỹ năng tối thượng
+            ultimateSkills: [],
+            ownedSkills: [],
+            activeSkill: null,
+            skillProtectionActive: false
+        };
+
+        // Tạo 500 kỹ năng tối thượng
+        function generateUltimateSkills() {
+            const skillTypes = [
+                "Toán Học", "Vật Lý", "Hóa Học", "Sinh Học", "Lịch Sử", 
+                "Địa Lý", "Ngữ Văn", "Tiếng Anh", "Nghệ Thuật", "Công Nghệ",
+                "Triết Học", "Tâm Lý", "Kinh Tế", "Chính Trị", "Môi Trường",
+                "Y Học", "Thể Thao", "Âm Nhạc", "Hội Họa", "Kiến Trúc"
+            ];
+            
+            const skillPrefixes = [
+                "Bậc Thầy", "Chuyên Gia", "Thiên Tài", "Giáo Sư", "Tiến Sĩ",
+                "Nhà Khoa Học", "Nhà Nghiên Cứu", "Nhà Phát Minh", "Nhà Thông Thái",
+                "Bậc Thầy Vũ Trụ", "Chúa Tể", "Hoàng Đế", "Thần", "Siêu Nhân"
+            ];
+            
+            const skillEffects = [
+                "Tăng 50% điểm số trong 3 câu hỏi",
+                "Tự động trả lời đúng 1 câu hỏi",
+                "Hồi phục 2 mạng sống",
+                "Nhân đôi điểm số trong 5 câu hỏi",
+                "Bỏ qua 3 câu hỏi khó",
+                "Tăng gấp 3 lần điểm số câu hỏi tiếp theo",
+                "Mở khóa tất cả gợi ý",
+                "Vô hiệu hóa mất mạng trong 5 câu hỏi",
+                "Tự động hoàn thành 10% tiến trình",
+                "Nhận ngay 1000 điểm"
+            ];
+            
+            for (let i = 1; i <= 500; i++) {
+                const type = skillTypes[Math.floor(Math.random() * skillTypes.length)];
+                const prefix = skillPrefixes[Math.floor(Math.random() * skillPrefixes.length)];
+                const effect = skillEffects[Math.floor(Math.random() * skillEffects.length)];
                 
-                const size = Math.random() * 5 + 1;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
+                gameState.ultimateSkills.push({
+                    id: i,
+                    name: `${prefix} ${type} ${i}`,
+                    description: `Kỹ năng ${type} cấp độ ${i}. ${effect}`,
+                    effect: effect,
+                    type: type,
+                    rarity: getRarity(i),
+                    used: false
+                });
+            }
+        }
+        
+        function getRarity(id) {
+            if (id <= 100) return "common";
+            if (id <= 200) return "rare";
+            if (id <= 300) return "epic";
+            if (id <= 400) return "legendary";
+            return "divine";
+        }
+
+        // Avatars
+        const avatars = [
+            { id: 1, name: "Rồng Xanh", color: "#2196F3", emoji: "🐉" },
+            { id: 2, name: "Rồng Đỏ", color: "#F44336", emoji: "🐲" },
+            { id: 3, name: "Rồng Vàng", color: "#FFD700", emoji: "🐉" },
+            { id: 4, name: "Rồng Tím", color: "#9C27B0", emoji: "🐲" },
+            { id: 5, name: "Rồng Bạc", color: "#E0E0E0", emoji: "🐉" },
+            { id: 6, name: "Rồng Đen", color: "#212121", emoji: "🐲" },
+            { id: 7, name: "Phượng Hoàng", color: "#FF9800", emoji: "🦚" },
+            { id: 8, name: "Kỳ Lân", color: "#4CAF50", emoji: "🦄" },
+            { id: 9, name: "Bạch Tuộc", color: "#7B1FA2", emoji: "🐙" },
+            { id: 10, name: "Sư Tử", color: "#FFC107", emoji: "🦁" }
+        ];
+
+        // DOM elements
+        const playerSetup = document.getElementById('player-setup');
+        const playerNameInput = document.getElementById('player-name-input');
+        const avatarSelection = document.getElementById('avatar-selection');
+        const startGameButton = document.getElementById('start-game-button');
+        const playerNameElement = document.getElementById('player-name');
+        const playerAvatarElement = document.getElementById('player-avatar');
+        const avatarContentElement = document.getElementById('avatar-content');
+        const playerLevelElement = document.getElementById('player-level');
+        const levelProgressElement = document.getElementById('level-progress');
+        const heartsElement = document.getElementById('hearts');
+        const scoreElement = document.getElementById('score');
+        const sceneTitleElement = document.getElementById('scene-title');
+        const sceneDescriptionElement = document.getElementById('scene-description');
+        const questionElement = document.getElementById('question');
+        const answerInput = document.getElementById('answer-input');
+        const submitButton = document.getElementById('submit-button');
+        const feedbackElement = document.getElementById('feedback');
+        const hintElement = document.getElementById('hint');
+        const skillEffectElement = document.getElementById('skill-effect');
+        const progressBarElement = document.getElementById('progress-bar');
+        const currentQuestionElement = document.getElementById('current-question');
+        const skillProgressElement = document.getElementById('skill-progress');
+        const activeSkillElement = document.getElementById('active-skill');
+        const skillDescriptionElement = document.getElementById('skill-description');
+        const useSkillButton = document.getElementById('use-skill-button');
+        const skillsListElement = document.getElementById('skills-list');
+        const gameOverElement = document.getElementById('game-over');
+        const finalScoreElement = document.getElementById('final-score');
+        const restartButton = document.getElementById('restart-button');
+        const healthBonusElement = document.getElementById('health-bonus');
+        const skillModal = document.getElementById('skill-modal');
+        const skillModalTitle = document.getElementById('skill-modal-title');
+        const skillOptions = document.getElementById('skill-options');
+        const confirmSkillButton = document.getElementById('confirm-skill');
+
+        // Initialize game
+        function initGame() {
+            // Generate ultimate skills
+            generateUltimateSkills();
+            
+            // Create stars
+            createStars();
+            
+            // Create cosmic orbs
+            createCosmicOrbs();
+            
+            // Initialize avatars
+            renderAvatars();
+            
+            // Initialize hearts
+            updateHearts();
+            
+            // Initialize skills
+            renderSkills();
+            
+            // Set up event listeners
+            startGameButton.addEventListener('click', startGame);
+            submitButton.addEventListener('click', checkAnswer);
+            answerInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkAnswer();
+                }
+            });
+            useSkillButton.addEventListener('click', useActiveSkill);
+            restartButton.addEventListener('click', restartGame);
+            confirmSkillButton.addEventListener('click', confirmSkillSelection);
+            
+            // Show player setup
+            playerSetup.style.display = 'flex';
+        }
+
+        // Create stars for background
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 200;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
                 
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
+                // Random position
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
                 
-                const duration = Math.random() * 20 + 10;
-                particle.style.animationDuration = `${duration}s`;
+                // Random size
+                const size = Math.random() * 3;
                 
+                // Random animation delay
                 const delay = Math.random() * 5;
-                particle.style.animationDelay = `${delay}s`;
                 
-                particlesContainer.appendChild(particle);
+                star.style.left = `${left}%`;
+                star.style.top = `${top}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.animationDelay = `${delay}s`;
+                
+                starsContainer.appendChild(star);
             }
         }
 
-        // Database kỹ năng (30 skills)
-        const skillsDatabase = [
-            // Toán học (5 skills)
-            { id: 1, name: "Tính Nhẩm Thần Tốc", description: "Tự động hiển thị đáp án cho câu hỏi tính nhẩm", type: "math", effect: "Hiển thị kết quả phép tính" },
-            { id: 2, name: "Giải Phương Trình", description: "Hiển thị các bước giải phương trình", type: "math", effect: "Hiển thị phương pháp giải" },
-            { id: 3, name: "Hình Học Thông Thái", description: "Hiển thị hình vẽ minh họa cho bài toán hình học", type: "math", effect: "Hiển thị hình ảnh minh họa" },
-            { id: 4, name: "Đại Số Cao Thủ", description: "Tự động đơn giản hóa biểu thức đại số", type: "math", effect: "Đơn giản hóa bài toán" },
-            { id: 5, name: "Toán Đố Siêu Tốc", description: "Phân tích bài toán đố thành các bước đơn giản", type: "math", effect: "Phân tích bài toán" },
+        // Create cosmic orbs for background
+        function createCosmicOrbs() {
+            const orbsContainer = document.getElementById('cosmic-orbs');
+            const orbCount = 5;
             
-            // Khoa học tự nhiên (5 skills)
-            { id: 6, name: "Vật Lý Thực Nghiệm", description: "Hiển thị công thức vật lý liên quan", type: "science", effect: "Hiển thị công thức" },
-            { id: 7, name: "Hóa Học Phân Tích", description: "Hiển thị phương trình hóa học cân bằng", type: "science", effect: "Cân bằng phương trình" },
-            { id: 8, name: "Sinh Học Diệu Kỳ", description: "Hiển thị sơ đồ quá trình sinh học", type: "science", effect: "Hiển thị sơ đồ" },
-            { id: 9, name: "Thiên Văn Học", description: "Hiển thị hình ảnh hệ mặt trời và các hành tinh", type: "science", effect: "Hiển thị hình ảnh vũ trụ" },
-            { id: 10, name: "Khoa Học Trái Đất", description: "Giải thích hiện tượng tự nhiên chi tiết", type: "science", effect: "Giải thích khoa học" },
-            
-            // Tiếng Anh (5 skills)
-            { id: 11, name: "Từ Vựng Thông Thái", description: "Hiển thị định nghĩa từ vựng tiếng Anh", type: "english", effect: "Hiển thị định nghĩa" },
-            { id: 12, name: "Ngữ Pháp Hoàn Hảo", description: "Phân tích cấu trúc ngữ pháp trong câu", type: "english", effect: "Phân tích ngữ pháp" },
-            { id: 13, name: "Phát Âm Chuẩn", description: "Hiển thị phiên âm quốc tế IPA", type: "english", effect: "Hiển thị phiên âm" },
-            { id: 14, name: "Dịch Thuật Chuyên Nghiệp", description: "Cung cấp bản dịch song ngữ chi tiết", type: "english", effect: "Dịch song ngữ" },
-            { id: 15, name: "Giao Tiếp Lưu Loát", description: "Đưa ra các tình huống giao tiếp thực tế", type: "english", effect: "Tình huống giao tiếp" },
-            
-            // Lịch sử & Văn hóa (5 skills)
-            { id: 16, name: "Lịch Sử Sống Động", description: "Hiển thị dòng thời gian sự kiện lịch sử", type: "history", effect: "Dòng thời gian" },
-            { id: 17, name: "Địa Lý Toàn Cầu", description: "Hiển thị bản đồ các khu vực liên quan", type: "history", effect: "Hiển thị bản đồ" },
-            { id: 18, name: "Văn Hóa Dân Gian", description: "Giải thích phong tục, tập quán văn hóa", type: "history", effect: "Giải thích văn hóa" },
-            { id: 19, name: "Khảo Cổ Học", description: "Hiển thị hình ảnh hiện vật lịch sử", type: "history", effect: "Hiển thị hiện vật" },
-            { id: 20, name: "Di Sản Thế Giới", description: "Giới thiệu các di sản UNESCO", type: "history", effect: "Giới thiệu di sản" },
-            
-            // Đố vui & Sáng tạo (5 skills)
-            { id: 21, name: "Logic Thiên Tài", description: "Phân tích quy luật logic trong câu đố", type: "puzzle", effect: "Phân tích logic" },
-            { id: 22, name: "Sáng Tạo Vô Hạn", description: "Gợi ý các hướng giải quyết sáng tạo", type: "puzzle", effect: "Gợi ý sáng tạo" },
-            { id: 23, name: "Tư Duy Phản Biện", description: "Phân tích vấn đề từ nhiều góc độ", type: "puzzle", effect: "Phân tích đa chiều" },
-            { id: 24, name: "Giải Mã Bí Ẩn", description: "Tiết lộ manh mối cho câu đố phức tạp", type: "puzzle", effect: "Tiết lộ manh mối" },
-            { id: 25, name: "Trí Tuệ Đám Đông", description: "Hiển thị các phương án phổ biến", type: "puzzle", effect: "Phương án phổ biến" },
-            
-            // Hỗ trợ đa môn (5 skills)
-            { id: 26, name: "Bách Khoa Toàn Thư", description: "Cung cấp thông tin bổ sung kiến thức", type: "general", effect: "Thông tin bổ sung" },
-            { id: 27, name: "Mẹo Ghi Nhớ", description: "Đưa ra phương pháp ghi nhớ hiệu quả", type: "general", effect: "Phương pháp ghi nhớ" },
-            { id: 28, name: "Phân Tích Đề Bài", description: "Phân tích yêu cầu và hướng giải quyết", type: "general", effect: "Phân tích đề bài" },
-            { id: 29, name: "Kiến Thức Liên Môn", description: "Kết nối kiến thức giữa các môn học", type: "general", effect: "Kết nối liên môn" },
-            { id: 30, name: "Học Tập Chủ Động", description: "Đề xuất chủ đề học tập tiếp theo", type: "general", effect: "Đề xuất học tập" }
-        ];
+            for (let i = 0; i < orbCount; i++) {
+                const orb = document.createElement('div');
+                orb.classList.add('cosmic-orb');
+                
+                // Random position
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                
+                // Random size
+                const size = 100 + Math.random() * 200;
+                
+                // Random color
+                const colors = [
+                    'rgba(255, 111, 0, 0.6)',
+                    'rgba(156, 39, 176, 0.6)',
+                    'rgba(33, 150, 243, 0.6)',
+                    'rgba(124, 77, 255, 0.6)',
+                    'rgba(0, 229, 255, 0.6)'
+                ];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Random animation duration
+                const duration = 15 + Math.random() * 20;
+                
+                orb.style.left = `${left}%`;
+                orb.style.top = `${top}%`;
+                orb.style.width = `${size}px`;
+                orb.style.height = `${size}px`;
+                orb.style.background = color;
+                orb.style.animationDuration = `${duration}s`;
+                
+                orbsContainer.appendChild(orb);
+            }
+        }
 
-        // Database câu hỏi mẫu
-        const questionDatabase = {
-            math: [
-                { question: "Tính: 125 + 375", answer: "500", hint: "Cộng hàng đơn vị trước: 5 + 5 = 10, viết 0 nhớ 1" },
-                { question: "Tìm x: x + 25 = 80", answer: "55", hint: "x = 80 - 25" },
-                { question: "Tính: 45 × 6", answer: "270", hint: "40 × 6 = 240, 5 × 6 = 30, tổng 270" },
-                { question: "Chia: 144 ÷ 12", answer: "12", hint: "12 × 12 = 144" },
-                { question: "Tính: 3² + 4²", answer: "25", hint: "3² = 9, 4² = 16, 9 + 16 = 25" },
-                { question: "Tính: 78 - 29", answer: "49", hint: "78 - 20 = 58, 58 - 9 = 49" },
-                { question: "Tính: 15 × 8", answer: "120", hint: "10 × 8 = 80, 5 × 8 = 40, tổng 120" },
-                { question: "Tính: 96 ÷ 8", answer: "12", hint: "80 ÷ 8 = 10, 16 ÷ 8 = 2, tổng 12" },
-                { question: "Tính: 7 × 9", answer: "63", hint: "7 × 10 = 70, 70 - 7 = 63" },
-                { question: "Tính: 256 ÷ 16", answer: "16", hint: "16 × 16 = 256" }
-            ],
-            science: [
-                { question: "Công thức tính vận tốc", answer: "v = s/t", hint: "Quãng đường chia thời gian" },
-                { question: "Nước sôi ở bao nhiêu độ C?", answer: "100", hint: "Ở điều kiện áp suất tiêu chuẩn" },
-                { question: "Công thức hóa học của nước", answer: "h2o", hint: "2 nguyên tử H, 1 nguyên tử O" },
-                { question: "Tim người có mấy ngăn?", answer: "4", hint: "2 tâm nhĩ, 2 tâm thất" },
-                { question: "Khí nào chiếm tỉ lệ cao nhất trong không khí?", answer: "nitơ", hint: "Khoảng 78%" },
-                { question: "Nguyên tố nào phổ biến nhất trong vũ trụ?", answer: "hydro", hint: "Nguyên tố nhẹ nhất" },
-                { question: "Cây xanh quang hợp vào thời gian nào?", answer: "ban ngày", hint: "Cần ánh sáng mặt trời" },
-                { question: "Trái Đất quay quanh trục mất bao lâu?", answer: "24 giờ", hint: "Một ngày một đêm" },
-                { question: "Kim loại nào dẫn điện tốt nhất?", answer: "bạc", hint: "Sau đó là đồng, vàng, nhôm" },
-                { question: "Nguyên tố nào cần cho sự sống của cây?", answer: "nitơ", hint: "Có trong phân đạm" }
-            ],
-            english: [
-                { question: "Dịch 'house' sang tiếng Việt", answer: "ngôi nhà", hint: "Nơi để sống" },
-                { question: "Số 15 trong tiếng Anh", answer: "fifteen", hint: "Mười lăm" },
-                { question: "Màu xanh da trời trong tiếng Anh", answer: "blue", hint: "Blue sky" },
-                { question: "Con chó trong tiếng Anh", answer: "dog", hint: "Thú cưng phổ biến" },
-                { question: "Từ 'happy' nghĩa là gì?", answer: "vui vẻ", hint: "Cảm xúc tích cực" },
-                { question: "Dịch 'book' sang tiếng Việt", answer: "quyển sách", hint: "Để đọc" },
-                { question: "Số 20 trong tiếng Anh", answer: "twenty", hint: "Hai mươi" },
-                { question: "Màu đỏ trong tiếng Anh", answer: "red", hint: "Màu của máu" },
-                { question: "Con mèo trong tiếng Anh", answer: "cat", hint: "Thú cưng hay leo trèo" },
-                { question: "Từ 'water' nghĩa là gì?", answer: "nước", hint: "Chất lỏng cần cho sự sống" }
-            ],
-            history: [
-                { question: "Ai là vị vua đầu tiên của nước Văn Lang?", answer: "hùng vương", hint: "Thời đại Hùng Vương" },
-                { question: "Trận Bạch Đằng năm 938 do ai lãnh đạo?", answer: "ngô quyền", hint: "Đánh tan quân Nam Hán" },
-                { question: "Chiến thắng Điện Biên Phủ năm nào?", answer: "1954", hint: "Thế kỷ 20" },
-                { question: "Ai là Chủ tịch nước đầu tiên?", answer: "hồ chí minh", hint: "Bác Hồ" },
-                { question: "Ngày Giải phóng miền Nam?", answer: "30/4/1975", hint: "Ngày thống nhất đất nước" },
-                { question: "Ai là tác giả của Bình Ngô đại cáo?", answer: "nguyễn trãi", hint: "Danh nhân văn hóa thế giới" },
-                { question: "Nhà Lý dời đô về Thăng Long năm nào?", answer: "1010", hint: "Thế kỷ 11" },
-                { question: "Ai lãnh đạo cuộc khởi nghĩa Lam Sơn?", answer: "lê lợi", hint: "Vua Lê Thái Tổ" },
-                { question: "Chiến thắng Ngọc Hồi - Đống Đa năm nào?", answer: "1789", hint: "Thế kỷ 18" },
-                { question: "Ai là vị vua cuối cùng của triều Nguyễn?", answer: "bảo đại", hint: "Vị hoàng đế cuối cùng" }
-            ],
-            puzzle: [
-                { question: "Con gì càng kéo càng ngắn?", answer: "điếu thuốc lá", hint: "Khi hút sẽ ngắn dần" },
-                { question: "Cái gì càng nhiều càng ít thấy?", answer: "bóng tối", hint: "Khi có ánh sáng" },
-                { question: "Số nào lớn nhất có 2 chữ số?", answer: "99", hint: "Hai chữ số 9" },
-                { question: "1/2 của 100 là bao nhiêu?", answer: "50", hint: "100 chia 2" },
-                { question: "Cái gì bạn có thể giữ nhưng không chạm được?", answer: "lời hứa", hint: "Cam kết bằng lời" },
-                { question: "Cái gì có thể đi mà không có chân?", answer: "thời gian", hint: "Ngày tháng trôi qua" },
-                { question: "Cái gì càng để lâu càng nhẹ?", answer: "cây nến", hint: "Khi cháy sẽ nhỏ dần" },
-                { question: "Cái gì không ai muốn có nhưng khi có rồi không ai muốn mất?", answer: "tuổi già", hint: "Khi lớn tuổi" },
-                { question: "Cái gì luôn đến mà không bao giờ đến?", answer: "ngày mai", hint: "Khi đến rồi thì thành hôm nay" },
-                { question: "Cái gì càng lấy càng nhiều?", answer: "cái hố", hint: "Khi đào đất lên" }
-            ]
-        };
-
-        // Khởi tạo trò chơi
-        document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
+        // Render avatars
+        function renderAvatars() {
+            avatarSelection.innerHTML = '';
             
-            let currentPlayer = null;
-            let currentSkills = [];
-            let selectedSkill = null;
-            let questionsSinceLastSkill = 0;
-            let usedQuestions = []; // Mảng lưu các câu hỏi đã sử dụng
-            
-            const gameData = {
-                currentStage: 1,
-                score: 0,
-                hearts: 3,
-                maxHearts: 5,
-                stages: [],
-                usedSkills: []
-            };
-            
-            const elements = {
-                playerSetup: document.getElementById('player-setup'),
-                mainContainer: document.getElementById('main-container'),
-                playerNameInput: document.getElementById('player-name-input'),
-                startGameBtn: document.getElementById('start-game-btn'),
-                playerAvatar: document.getElementById('player-avatar'),
-                playerName: document.getElementById('player-name'),
-                sceneTitle: document.getElementById('scene-title'),
-                sceneDescription: document.getElementById('scene-description'),
-                sceneImage: document.getElementById('scene-image'),
-                question: document.getElementById('question'),
-                answerInput: document.getElementById('answer-input'),
-                submitBtn: document.getElementById('submit-btn'),
-                feedback: document.getElementById('feedback'),
-                hint: document.getElementById('hint'),
-                heartsContainer: document.getElementById('hearts'),
-                score: document.getElementById('score'),
-                progressBar: document.getElementById('progress-bar'),
-                stageIndicator: document.getElementById('stage-indicator'),
-                skillsList: document.getElementById('skills-list'),
-                skillSelection: document.getElementById('skill-selection'),
-                skillOptions: document.getElementById('skill-options'),
-                confirmSkillBtn: document.getElementById('confirm-skill-btn'),
-                activeSkill: document.getElementById('active-skill'),
-                activeSkillDescription: document.getElementById('active-skill-description'),
-                useSkillBtn: document.getElementById('use-skill-btn')
-            };
-            
-            // Xử lý chọn avatar
-            document.querySelectorAll('.avatar-option').forEach(option => {
-                option.addEventListener('click', function() {
+            avatars.forEach(avatar => {
+                const avatarOption = document.createElement('div');
+                avatarOption.classList.add('avatar-option');
+                avatarOption.dataset.id = avatar.id;
+                
+                avatarOption.innerHTML = `
+                    <div class="avatar-image" style="background: ${avatar.color}">
+                        <span style="font-size: 2.5rem;">${avatar.emoji}</span>
+                    </div>
+                    <div class="avatar-name">${avatar.name}</div>
+                `;
+                
+                avatarOption.addEventListener('click', () => {
                     document.querySelectorAll('.avatar-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    avatarOption.classList.add('selected');
+                    gameState.playerAvatar = avatar;
+                });
+                
+                avatarSelection.appendChild(avatarOption);
+            });
+            
+            // Select first avatar by default
+            avatarSelection.children[0].classList.add('selected');
+            gameState.playerAvatar = avatars[0];
+        }
+
+        // Start the game
+        function startGame() {
+            const name = playerNameInput.value.trim();
+            if (name) {
+                gameState.playerName = name;
+                playerNameElement.textContent = name;
+            }
+            
+            // Set avatar
+            if (gameState.playerAvatar) {
+                avatarContentElement.style.background = gameState.playerAvatar.color;
+                avatarContentElement.innerHTML = gameState.playerAvatar.emoji;
+            }
+            
+            playerSetup.style.display = 'none';
+            
+            // Initialize game state
+            gameState.score = 0;
+            gameState.level = 1;
+            gameState.hearts = 3;
+            gameState.currentQuestion = 0;
+            gameState.correctAnswers = 0;
+            gameState.consecutiveCorrect = 0;
+            gameState.questionsSinceLastSkill = 0;
+            gameState.skillProtectionActive = false;
+            
+            // Reset skills - start with initial skills
+            gameState.initialSkills.forEach(skill => skill.used = false);
+            gameState.ownedSkills = [...gameState.initialSkills];
+            gameState.activeSkill = null;
+            
+            // Update UI
+            updateScore();
+            updateLevel();
+            updateHearts();
+            renderSkills();
+            hideActiveSkill();
+            
+            // Load first question
+            loadQuestion();
+        }
+
+        // Load a question
+        function loadQuestion() {
+            // Generate random question
+            const randomIndex = Math.floor(Math.random() * gameState.questions.length);
+            gameState.currentQuestionData = gameState.questions[randomIndex];
+            
+            // Update UI
+            questionElement.textContent = gameState.currentQuestionData.question;
+            currentQuestionElement.textContent = gameState.currentQuestion + 1;
+            skillProgressElement.textContent = gameState.questionsSinceLastSkill;
+            
+            // Update progress bar
+            const progress = (gameState.questionsSinceLastSkill % 5) * 20;
+            progressBarElement.style.width = `${progress}%`;
+            
+            // Clear input and feedback
+            answerInput.value = '';
+            feedbackElement.style.display = 'none';
+            hintElement.style.display = 'none';
+            skillEffectElement.style.display = 'none';
+            
+            // Focus on input
+            answerInput.focus();
+            
+            // Update scene based on progress
+            updateScene();
+        }
+
+        // Update scene based on progress
+        function updateScene() {
+            const progress = gameState.questionsSinceLastSkill % 5;
+            
+            if (progress < 1) {
+                sceneTitleElement.textContent = "Hành tinh Khởi đầu";
+                sceneDescriptionElement.textContent = "Bạn đang ở hành tinh Khởi đầu. Hãy cẩn thận với những câu hỏi đầu tiên - chúng sẽ quyết định tốc độ phát triển của bạn!";
+            } else if (progress < 2) {
+                sceneTitleElement.textContent = "Thiên hà Tri thức";
+                sceneDescriptionElement.textContent = "Bạn đã tiến vào Thiên hà Tri thức. Các câu hỏi ở đây sẽ thử thách hiểu biết của bạn về vũ trụ!";
+            } else if (progress < 3) {
+                sceneTitleElement.textContent = "Tinh vân Thử thách";
+                sceneDescriptionElement.textContent = "Bạn đang ở Tinh vân Thử thách. Đây là nơi những câu hỏi khó nhất đang chờ đợi!";
+            } else if (progress < 4) {
+                sceneTitleElement.textContent = "Lỗ đen Vinh quang";
+                sceneDescriptionElement.textContent = "Bạn đã đến gần Lỗ đen Vinh quang. Chỉ cần vượt qua những câu hỏi cuối cùng, bạn sẽ trở thành bậc thầy vũ trụ!";
+            } else {
+                sceneTitleElement.textContent = "Trung tâm Vũ trụ";
+                sceneDescriptionElement.textContent = "Bạn đã đến Trung tâm Vũ trụ! Hoàn thành câu hỏi này để nhận kỹ năng tối thượng!";
+            }
+        }
+
+        // Check the answer
+        function checkAnswer() {
+            const userAnswer = answerInput.value.trim().toLowerCase();
+            
+            if (!userAnswer) {
+                return;
+            }
+            
+            const isCorrect = userAnswer === gameState.currentQuestionData.answer;
+            
+            if (isCorrect) {
+                handleCorrectAnswer();
+            } else {
+                handleIncorrectAnswer();
+            }
+            
+            // Show feedback
+            showFeedback(isCorrect);
+            
+            // Move to next question after a delay
+            setTimeout(() => {
+                gameState.currentQuestion++;
+                gameState.questionsSinceLastSkill++;
+                
+                // Check if player has answered 5 questions since last skill
+                if (gameState.questionsSinceLastSkill >= 5) {
+                    showSkillSelection();
+                    gameState.questionsSinceLastSkill = 0;
+                }
+                
+                loadQuestion();
+            }, 2000);
+        }
+
+        // Handle correct answer
+        function handleCorrectAnswer() {
+            // Increase score
+            gameState.score += 100;
+            gameState.correctAnswers++;
+            gameState.consecutiveCorrect++;
+            
+            // Check for health bonus (every 5 consecutive correct answers)
+            if (gameState.consecutiveCorrect % 5 === 0 && gameState.hearts < gameState.maxHearts) {
+                gameState.hearts++;
+                showHealthBonus();
+                updateHearts();
+            }
+            
+            // Update UI
+            updateScore();
+            
+            // Check for level up
+            if (gameState.correctAnswers % 3 === 0) {
+                gameState.level++;
+                updateLevel();
+            }
+        }
+
+        // Handle incorrect answer
+        function handleIncorrectAnswer() {
+            // Check if protection skill is active
+            if (gameState.skillProtectionActive) {
+                gameState.skillProtectionActive = false;
+                showSkillEffect("Kỹ năng Bảo vệ Vũ trụ đã bảo vệ bạn khỏi mất mạng!");
+                return;
+            }
+            
+            // Decrease hearts
+            gameState.hearts--;
+            gameState.consecutiveCorrect = 0;
+            
+            // Update UI
+            updateHearts();
+            
+            // Check for game over
+            if (gameState.hearts <= 0) {
+                setTimeout(() => {
+                    endGame(false);
+                }, 1500);
+            }
+        }
+
+        // Show feedback
+        function showFeedback(isCorrect) {
+            if (isCorrect) {
+                feedbackElement.textContent = "Chính xác! Bạn đã tiến thêm một bước trong vũ trụ tri thức.";
+                feedbackElement.className = "feedback correct";
+            } else {
+                feedbackElement.textContent = `Sai rồi! Đáp án đúng là: ${gameState.currentQuestionData.answer}`;
+                feedbackElement.className = "feedback incorrect";
+            }
+            
+            feedbackElement.style.display = 'block';
+        }
+
+        // Show skill effect
+        function showSkillEffect(message) {
+            skillEffectElement.textContent = message;
+            skillEffectElement.style.display = 'block';
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                skillEffectElement.style.display = 'none';
+            }, 3000);
+        }
+
+        // Update score display
+        function updateScore() {
+            scoreElement.textContent = gameState.score;
+        }
+
+        // Update level display
+        function updateLevel() {
+            playerLevelElement.textContent = gameState.level;
+            
+            // Update level progress
+            const progress = (gameState.correctAnswers % 3) * 33.33;
+            levelProgressElement.style.width = `${progress}%`;
+        }
+
+        // Update hearts display
+        function updateHearts() {
+            heartsElement.innerHTML = '';
+            
+            for (let i = 0; i < gameState.maxHearts; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                
+                if (i < gameState.hearts) {
+                    heart.textContent = '❤️';
+                    heart.style.animationDelay = `${i * 0.3}s`;
+                } else {
+                    heart.textContent = '🖤';
+                    heart.style.animation = 'none';
+                }
+                
+                heartsElement.appendChild(heart);
+            }
+        }
+
+        // Render skills
+        function renderSkills() {
+            skillsListElement.innerHTML = '';
+            
+            if (gameState.ownedSkills.length === 0) {
+                skillsListElement.innerHTML = '<div class="skill-item">Chưa có kỹ năng nào</div>';
+            } else {
+                gameState.ownedSkills.forEach(skill => {
+                    const skillElement = document.createElement('div');
+                    skillElement.classList.add('skill-item');
+                    
+                    if (skill.used) {
+                        skillElement.style.opacity = '0.5';
+                    }
+                    
+                    skillElement.innerHTML = `
+                        <div class="skill-name">
+                            <span>${skill.name}</span>
+                        </div>
+                        <div class="skill-description">${skill.description}</div>
+                    `;
+                    
+                    skillElement.addEventListener('click', () => {
+                        if (!skill.used) {
+                            activateSkill(skill);
+                        }
+                    });
+                    
+                    skillsListElement.appendChild(skillElement);
+                });
+            }
+        }
+
+        // Activate a skill
+        function activateSkill(skill) {
+            gameState.activeSkill = skill;
+            
+            // Update UI
+            skillDescriptionElement.textContent = skill.description;
+            activeSkillElement.style.display = 'block';
+            
+            // Scroll to active skill
+            activeSkillElement.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Use active skill
+        function useActiveSkill() {
+            if (!gameState.activeSkill) return;
+            
+            const skill = gameState.activeSkill;
+            
+            // Mark skill as used
+            skill.used = true;
+            
+            // Apply skill effect based on skill type
+            switch(skill.type) {
+                case "protection":
+                    gameState.skillProtectionActive = true;
+                    showSkillEffect("Kỹ năng Bảo vệ Vũ trụ đã được kích hoạt! Bạn sẽ không mất mạng ở câu hỏi tiếp theo.");
+                    break;
+                    
+                case "hint":
+                    hintElement.textContent = "Gợi ý: " + gameState.currentQuestionData.hint;
+                    hintElement.style.display = 'block';
+                    showSkillEffect("Kỹ năng Gợi ý Thiên hà đã được kích hoạt! Hãy xem gợi ý bên trên.");
+                    break;
+                    
+                case "auto-answer":
+                    answerInput.value = gameState.currentQuestionData.answer;
+                    showSkillEffect("Kỹ năng Tự động Trả lời đã được kích hoạt! Câu trả lời đã được điền sẵn.");
+                    break;
+                    
+                default:
+                    // For ultimate skills, show a generic effect
+                    showSkillEffect(`Kỹ năng ${skill.name} đã được kích hoạt! ${skill.effect}`);
+                    break;
+            }
+            
+            // Hide active skill
+            hideActiveSkill();
+            
+            // Update skills list
+            renderSkills();
+        }
+
+        // Hide active skill
+        function hideActiveSkill() {
+            activeSkillElement.style.display = 'none';
+            gameState.activeSkill = null;
+        }
+
+        // Show skill selection modal
+        function showSkillSelection() {
+            // Select 3 random skills from ultimate skills
+            const randomSkills = [];
+            const availableSkills = [...gameState.ultimateSkills];
+            
+            for (let i = 0; i < 3; i++) {
+                if (availableSkills.length === 0) break;
+                const randomIndex = Math.floor(Math.random() * availableSkills.length);
+                randomSkills.push(availableSkills[randomIndex]);
+                availableSkills.splice(randomIndex, 1);
+            }
+            
+            // Render skill options
+            skillOptions.innerHTML = '';
+            
+            randomSkills.forEach(skill => {
+                const skillOption = document.createElement('div');
+                skillOption.className = 'skill-option';
+                skillOption.dataset.id = skill.id;
+                
+                skillOption.innerHTML = `
+                    <div class="skill-name">
+                        ${skill.name}
+                    </div>
+                    <div class="skill-description">
+                        ${skill.description}
+                    </div>
+                    <div style="margin-top: 10px; font-size: 0.9rem; color: #666;">
+                        <strong>Hiệu ứng:</strong> ${skill.effect}
+                    </div>
+                `;
+                
+                skillOption.addEventListener('click', function() {
+                    document.querySelectorAll('.skill-option').forEach(opt => {
                         opt.classList.remove('selected');
                     });
                     this.classList.add('selected');
                 });
+                
+                skillOptions.appendChild(skillOption);
             });
             
-            // Bắt đầu trò chơi
-            elements.startGameBtn.addEventListener('click', function() {
-                const playerName = elements.playerNameInput.value.trim();
-                const selectedAvatar = document.querySelector('.avatar-option.selected').getAttribute('data-avatar');
-                
-                if (playerName) {
-                    currentPlayer = {
-                        name: playerName,
-                        avatar: selectedAvatar
-                    };
-                    
-                    elements.playerName.textContent = currentPlayer.name;
-                    elements.playerAvatar.textContent = currentPlayer.avatar;
-                    
-                    elements.playerSetup.style.display = 'none';
-                    elements.mainContainer.style.display = 'block';
-                    
-                    // Khởi tạo trò chơi
-                    initializeGame();
-                } else {
-                    alert('Vui lòng nhập tên của bạn!');
-                }
-            });
+            // Show modal
+            skillModal.style.display = 'flex';
+        }
+
+        // Confirm skill selection
+        function confirmSkillSelection() {
+            const selectedOption = document.querySelector('.skill-option.selected');
             
-            // Khởi tạo trò chơi
-            function initializeGame() {
-                usedQuestions = []; // Reset danh sách câu hỏi đã dùng
-                generateNewStage();
-                updateHearts();
-                updateScore();
-                updateSkillsList();
+            if (!selectedOption) {
+                alert('Hãy chọn một kỹ năng!');
+                return;
             }
             
-            // Tạo màn chơi mới
-            function generateNewStage() {
-                const categories = Object.keys(questionDatabase);
-                const randomCategory = categories[Math.floor(Math.random() * categories.length)];
-                const questions = questionDatabase[randomCategory];
+            const skillId = parseInt(selectedOption.dataset.id);
+            const selectedSkill = gameState.ultimateSkills.find(skill => skill.id === skillId);
+            
+            if (selectedSkill) {
+                gameState.ownedSkills.push(selectedSkill);
+                renderSkills();
                 
-                // Lọc ra những câu hỏi chưa được sử dụng
-                const availableQuestions = questions.filter(q => 
-                    !usedQuestions.includes(q.question)
-                );
+                // Hide modal
+                skillModal.style.display = 'none';
                 
-                // Nếu đã dùng hết câu hỏi, reset danh sách đã dùng
-                if (availableQuestions.length === 0) {
-                    usedQuestions = [];
-                    generateNewStage();
-                    return;
-                }
-                
-                const randomQuestion = availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
-                
-                // Thêm câu hỏi vào danh sách đã dùng
-                usedQuestions.push(randomQuestion.question);
-                
-                gameData.stages.push({
-                    title: `Màn ${gameData.currentStage}: Thử thách ${randomCategory}`,
-                    description: getStageDescription(gameData.currentStage, randomCategory),
-                    question: randomQuestion.question,
-                    answer: randomQuestion.answer,
-                    hint: randomQuestion.hint,
-                    image: getStageImage(gameData.currentStage, randomCategory),
-                    category: randomCategory
-                });
-                
-                loadCurrentStage();
+                // Show notification
+                showSkillEffect(`Bạn đã nhận được kỹ năng: ${selectedSkill.name}!`);
             }
+        }
+
+        // Show health bonus notification
+        function showHealthBonus() {
+            healthBonusElement.style.display = 'block';
             
-            function getStageDescription(stage, category) {
-                const descriptions = {
-                    math: `Màn ${stage} - Thử thách Toán học. Hãy vận dụng trí thông minh!`,
-                    science: `Màn ${stage} - Khám phá Khoa học. Kiến thức tự nhiên sẽ giúp bạn!`,
-                    english: `Màn ${stage} - Phiêu lưu Tiếng Anh. Thể hiện khả năng ngoại ngữ!`,
-                    history: `Màn ${stage} - Hành trình Lịch sử. Hiểu biết quá khứ quan trọng!`,
-                    puzzle: `Màn ${stage} - Đố vui Sáng tạo. Hãy suy nghĩ thật kỹ!`
-                };
-                
-                return descriptions[category] || `Màn ${stage} - Thử thách Tri thức. Hãy cố gắng hết sức!`;
+            setTimeout(() => {
+                healthBonusElement.style.display = 'none';
+            }, 1500);
+        }
+
+        // End the game
+        function endGame(isCompleted) {
+            if (isCompleted) {
+                // Game completed successfully
+                alert(`Chúc mừng! Bạn đã hoàn thành tất cả câu hỏi với số điểm ${gameState.score}!`);
+                restartGame();
+            } else {
+                // Game over
+                finalScoreElement.textContent = gameState.score;
+                gameOverElement.style.display = 'flex';
             }
-            
-            function getStageImage(stage, category) {
-                const colors = ['4a148c', '8e24aa', '5e35b1', '3949ab', '1e88e5'];
-                const color = colors[(stage - 1) % colors.length];
-                const categoryNames = {
-                    math: "Toán Học",
-                    science: "Khoa Học",
-                    english: "Tiếng Anh", 
-                    history: "Lịch Sử",
-                    puzzle: "Đố Vui"
-                };
-                
-                return `https://via.placeholder.com/800x200/${color}/ffffff?text=Màn+${stage}+-+${categoryNames[category]}`;
-            }
-            
-            // Cập nhật danh sách kỹ năng
-            function updateSkillsList() {
-                elements.skillsList.innerHTML = '';
-                
-                if (currentSkills.length === 0) {
-                    elements.skillsList.innerHTML = '<div class="skill-item">Chưa có kỹ năng nào</div>';
-                    elements.activeSkill.style.display = 'none';
-                } else {
-                    currentSkills.forEach(skill => {
-                        const skillDiv = document.createElement('div');
-                        skillDiv.className = 'skill-item';
-                        skillDiv.innerHTML = `
-                            <div class="skill-name">${skill.name}</div>
-                            <div class="skill-description">${skill.description}</div>
-                        `;
-                        elements.skillsList.appendChild(skillDiv);
-                    });
-                    
-                    if (selectedSkill) {
-                        elements.activeSkillDescription.textContent = `${selectedSkill.name}: ${selectedSkill.effect}`;
-                        elements.activeSkill.style.display = 'block';
-                    }
-                }
-            }
-            
-            // Cập nhật giao diện trái tim
-            function updateHearts() {
-                elements.heartsContainer.innerHTML = '';
-                for (let i = 0; i < gameData.maxHearts; i++) {
-                    const heart = document.createElement('span');
-                    heart.classList.add('heart');
-                    if (i < gameData.hearts) {
-                        heart.textContent = '❤️';
-                    } else {
-                        heart.textContent = '♡';
-                        heart.style.opacity = '0.5';
-                    }
-                    elements.heartsContainer.appendChild(heart);
-                }
-            }
-            
-            // Cập nhật điểm số
-            function updateScore() {
-                elements.score.textContent = gameData.score;
-            }
-            
-            // Cập nhật thanh tiến trình
-            function updateProgress() {
-                const progress = (questionsSinceLastSkill % 5) * 20;
-                elements.progressBar.style.width = `${progress}%`;
-                elements.stageIndicator.textContent = `Màn ${gameData.currentStage} - Tiến độ: ${questionsSinceLastSkill}/5`;
-            }
-            
-            // Hiển thị phản hồi
-            function showFeedback(message, isCorrect) {
-                elements.feedback.textContent = message;
-                elements.feedback.className = 'feedback ' + (isCorrect ? 'correct' : 'incorrect');
-                elements.feedback.style.display = 'block';
-                
-                setTimeout(() => {
-                    elements.feedback.style.display = 'none';
-                }, 3000);
-            }
-            
-            // Hiển thị gợi ý
-            function showHint() {
-                const currentStage = gameData.stages[gameData.currentStage - 1];
-                elements.hint.textContent = `💡 Gợi ý: ${currentStage.hint}`;
-                elements.hint.style.display = 'block';
-            }
-            
-            // Chuyển sang màn tiếp theo
-            function nextStage() {
-                gameData.currentStage++;
-                questionsSinceLastSkill++;
-                
-                // Kiểm tra xem đã đến lúc chọn skill chưa
-                if (questionsSinceLastSkill >= 5) {
-                    showSkillSelection();
-                    questionsSinceLastSkill = 0;
-                } else {
-                    generateNewStage();
-                }
-            }
-            
-            // Hiển thị lựa chọn skill
-            function showSkillSelection() {
-                // Chọn ngẫu nhiên 3 skill từ database
-                const randomSkills = [];
-                const availableSkills = [...skillsDatabase];
-                
-                for (let i = 0; i < 3; i++) {
-                    const randomIndex = Math.floor(Math.random() * availableSkills.length);
-                    randomSkills.push(availableSkills[randomIndex]);
-                    availableSkills.splice(randomIndex, 1);
-                }
-                
-                // Hiển thị skill options
-                elements.skillOptions.innerHTML = '';
-                randomSkills.forEach(skill => {
-                    const skillOption = document.createElement('div');
-                    skillOption.className = 'skill-option';
-                    skillOption.innerHTML = `
-                        <div class="skill-name">${skill.name}</div>
-                        <div class="skill-description">${skill.description}</div>
-                        <div class="skill-effect">Hiệu ứng: ${skill.effect}</div>
-                    `;
-                    skillOption.addEventListener('click', function() {
-                        document.querySelectorAll('.skill-option').forEach(opt => {
-                            opt.classList.remove('selected');
-                        });
-                        this.classList.add('selected');
-                        selectedSkill = skill;
-                    });
-                    elements.skillOptions.appendChild(skillOption);
-                });
-                
-                elements.skillSelection.style.display = 'flex';
-            }
-            
-            // Xác nhận chọn skill
-            elements.confirmSkillBtn.addEventListener('click', function() {
-                if (selectedSkill) {
-                    currentSkills.push(selectedSkill);
-                    updateSkillsList();
-                    elements.skillSelection.style.display = 'none';
-                    selectedSkill = null;
-                    
-                    // Tiếp tục game
-                    generateNewStage();
-                } else {
-                    alert('Vui lòng chọn một kỹ năng!');
-                }
-            });
-            
-            // Sử dụng skill
-            elements.useSkillBtn.addEventListener('click', function() {
-                if (selectedSkill) {
-                    // Thực hiện hiệu ứng skill
-                    applySkillEffect(selectedSkill);
-                    
-                    // Xóa skill đã sử dụng
-                    const skillIndex = currentSkills.findIndex(skill => skill.id === selectedSkill.id);
-                    if (skillIndex > -1) {
-                        currentSkills.splice(skillIndex, 1);
-                    }
-                    
-                    // Reset selected skill
-                    selectedSkill = null;
-                    updateSkillsList();
-                    
-                    showFeedback('Đã sử dụng kỹ năng đặc biệt!', true);
-                }
-            });
-            
-            // Áp dụng hiệu ứng skill
-            function applySkillEffect(skill) {
-                const currentStage = gameData.stages[gameData.currentStage - 1];
-                
-                // Thực hiện các hiệu ứng khác nhau dựa trên loại skill
-                switch(skill.type) {
-                    case 'math':
-                        if (currentStage.category === 'math') {
-                            showFeedback('Kỹ năng Toán học được kích hoạt! Hiển thị đáp án...', true);
-                        }
-                        break;
-                    case 'science':
-                        if (currentStage.category === 'science') {
-                            showFeedback('Kỹ năng Khoa học được kích hoạt! Thông tin bổ sung...', true);
-                        }
-                        break;
-                    case 'english':
-                        if (currentStage.category === 'english') {
-                            showFeedback('Kỹ năng Tiếng Anh được kích hoạt! Phiên âm và định nghĩa...', true);
-                        }
-                        break;
-                    default:
-                        showFeedback('Kỹ năng đặc biệt được kích hoạt!', true);
-                }
-                
-                // Ghi lại skill đã sử dụng
-                gameData.usedSkills.push(skill.name);
-            }
-            
-            // Tải màn chơi hiện tại
-            function loadCurrentStage() {
-                const currentStage = gameData.stages[gameData.currentStage - 1];
-                
-                elements.sceneTitle.textContent = currentStage.title;
-                elements.sceneDescription.textContent = currentStage.description;
-                elements.question.textContent = currentStage.question;
-                elements.sceneImage.src = currentStage.image;
-                elements.answerInput.value = '';
-                elements.hint.style.display = 'none';
-                
-                updateProgress();
-            }
-            
-            // Xử lý khi người chơi trả lời
-            function handleAnswer() {
-                const userAnswer = elements.answerInput.value.trim().toLowerCase();
-                const currentStage = gameData.stages[gameData.currentStage - 1];
-                
-                if (userAnswer === currentStage.answer) {
-                    // Trả lời đúng
-                    gameData.score += 10;
-                    if (gameData.hearts < gameData.maxHearts) {
-                        gameData.hearts++;
-                    }
-                    
-                    showFeedback('Chính xác! +10 điểm và +1 trái tim 🎉', true);
-                    updateScore();
-                    updateHearts();
-                    
-                    // Chuyển màn sau 1.5 giây
-                    setTimeout(nextStage, 1500);
-                } else {
-                    // Trả lời sai
-                    gameData.hearts--;
-                    showFeedback('Sai rồi! -1 trái tim 😢 Thử lại nhé!', false);
-                    updateHearts();
-                    showHint();
-                    
-                    // Kiểm tra nếu hết trái tim
-                    if (gameData.hearts <= 0) {
-                        setTimeout(() => {
-                            if (confirm('Bạn đã hết trái tim! Trò chơi kết thúc. Điểm của bạn: ' + gameData.score + '. Chơi lại không?')) {
-                                resetGame();
-                            }
-                        }, 1000);
-                    }
-                }
-            }
-            
-            // Reset trò chơi
-            function resetGame() {
-                gameData.currentStage = 1;
-                gameData.score = 0;
-                gameData.hearts = 3;
-                gameData.stages = [];
-                currentSkills = [];
-                selectedSkill = null;
-                questionsSinceLastSkill = 0;
-                usedQuestions = [];
-                
-                initializeGame();
-                
-                elements.question.style.display = 'block';
-                elements.inputContainer.style.display = 'flex';
-            }
-            
-            // Gắn sự kiện cho trò chơi
-            elements.submitBtn.addEventListener('click', handleAnswer);
-            elements.answerInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    handleAnswer();
-                }
-            });
-        });
+        }
+
+        // Restart the game
+        function restartGame() {
+            gameOverElement.style.display = 'none';
+            startGame();
+        }
+
+        // Initialize the game when the page loads
+        window.addEventListener('load', initGame);
     </script>
 </body>
 </html>
